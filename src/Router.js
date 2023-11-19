@@ -7,7 +7,9 @@ import Signup from "./pages/Signup";
 import SignupA from "./pages/SignupA";
 import SignupB from "./pages/SignupB";
 import SignupC from "./pages/SignupC";
+import SignIn from "./pages/SignIn";
 import AddAccount from "./pages/AddAccount";
+
 const Router = () => {
   return (
     <BrowserRouter>
@@ -18,6 +20,7 @@ const Router = () => {
         <Route path="/signupa" element={<SignupA />} />
         <Route path="/signupb" element={<SignupB />} />
         <Route path="/signupc" element={<SignupC />} />
+        <Route path="/signin" element={<SignIn />} />
         <Route path="/addaccount" element={<AddAccount />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
