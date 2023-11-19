@@ -41,6 +41,29 @@ export const Wrapper2 = styled.div`
   text-align: center;
   margin-bottom: 3vh;
 `;
+export const Wrapper3 = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 0.5vh;
+  justify-content: right;
+`;
+export const DateWrapperTitle = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 0.5vh;
+  margin-right: 1vh;
+  padding: 0.5vh 0.5vw;
+`;
+export const DateWrapper = styled.div`
+  background: #d6e1ff;
+  width: 30vw;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin-bottom: 0.5vh;
+  padding: 0.5vh 0.5vw;
+  border-radius: 5px;
+`;
 
 export const CheckPerson = styled.div`
   background: #ded7fc;

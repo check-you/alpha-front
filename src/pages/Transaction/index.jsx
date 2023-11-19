@@ -10,7 +10,9 @@ import {
   WrapperOut,
   CheckPerson,
   TransactionLists,
-  SubTitleWraper,
+  DateWrapper,
+  DateWrapperTitle,
+  Wrapper3,
 } from "./styled";
 import backIcon from "../../assets/images/backIcon.svg";
 import design1 from "../../assets/images/design1.svg";
@@ -36,7 +38,16 @@ const Transaction = () => {
         <Wrapper2>
           <Text theme="subTitle">거래 내역</Text>
         </Wrapper2>
-
+        <Wrapper3>
+          <DateWrapperTitle>
+            <Text theme="dates">기간</Text>
+          </DateWrapperTitle>
+          <DateWrapper>
+            <Text theme="dates">2023.11.17 </Text>
+            <Text theme="dates"> ~ </Text>
+            <Text theme="dates">2023.11.22 </Text>
+          </DateWrapper>
+        </Wrapper3>
         <TransactionLists>
           <TransactionItems
             backgroundColor="#471AA0"
