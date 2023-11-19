@@ -56,6 +56,12 @@ const textStyles = {
     color: "black",
     lineHeight: "5vw",
   },
+  accountAddBtn: {
+    fontWeight: "normal",
+    fontSize: "3.5vw",
+    color: "white",
+    lineHeight: "5vw",
+  },
   accountNum: {
     fontWeight: "normal",
     fontSize: "3vw",
