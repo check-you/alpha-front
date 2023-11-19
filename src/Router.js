@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Main from "./pages/Main";
+import Main from "./pages/Main/Main";
 import NotFound from "./pages/NotFound";
 import LinkedAccounts from "./pages/LinkedAccounts";
 import Signup from "./pages/Signup";
