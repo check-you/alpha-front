@@ -9,6 +9,7 @@ import SignupB from "./pages/SignupB";
 import SignupC from "./pages/SignupC";
 import SignIn from "./pages/SignIn";
 import AddAccount from "./pages/AddAccount";
+import Transaction from "./pages/Transaction";
 
 const Router = () => {
   return (
@@ -22,6 +23,7 @@ const Router = () => {
         <Route path="/signupc" element={<SignupC />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/addaccount" element={<AddAccount />} />
+        <Route path="/transaction" element={<Transaction />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
