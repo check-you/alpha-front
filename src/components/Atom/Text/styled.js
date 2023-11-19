@@ -50,6 +50,24 @@ const textStyles = {
     color: "black",
     lineHeight: "5vw",
   },
+  accountCorp: {
+    fontWeight: "normal",
+    fontSize: "3vw",
+    color: "black",
+    lineHeight: "5vw",
+  },
+  accountNum: {
+    fontWeight: "normal",
+    fontSize: "3vw",
+    color: "black",
+    lineHeight: "5vw",
+  },
+  dashBoard: {
+    fontWeight: "normal",
+    fontSize: "2.5vw",
+    color: "white",
+    lineHeight: "5vw",
+  },
 };
 export const StyledText = styled.p`
   word-break: keep-all;
