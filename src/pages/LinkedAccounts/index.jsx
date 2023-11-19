@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, Button, LinkedAccount, AddAccount } from "../../components";
+import { Text, Button, LinkedAccount, AddAccountBtn } from "../../components";
 import { Container, DashBoard } from "./styled";
 
 const LinkedAccounts = () => {
@@ -11,7 +11,7 @@ const LinkedAccounts = () => {
         <Text theme="dashBoard">3 개 </Text>
       </DashBoard>
       <LinkedAccount />
-      <AddAccount />
+      <AddAccountBtn />
     </Container>
   );
 };
