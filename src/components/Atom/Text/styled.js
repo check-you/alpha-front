@@ -134,6 +134,11 @@ const textStyles = {
     color: "#471AA0",
     lineHeight: "5vw",
   },
+  dates: {
+    fontWeight: "light",
+    fontSize: "2vw",
+    color: "black",
+  },
 };
 export const StyledText = styled.p`
   word-break: keep-all;
