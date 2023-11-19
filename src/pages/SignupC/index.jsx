@@ -19,6 +19,19 @@ import first from "../../assets/images/firstNocheck.svg";
 import second from "../../assets/images/secondNocheck.svg";
 import third from "../../assets/images/thirdCheck.svg";
 const SignupA = () => {
+  const navigate = useNavigate();
+  const handleSubmit = () => {
+    if (true) {
+      // 수정: 비밀번호 확인
+      // 실행할 코드 (예: 회원가입 요청)
+      // axiosInstance.post("/auth/signup", {...})
+      // .then(response => { ... })
+      // .catch(error => { ... });
+      navigate("/transaction");
+    } else {
+      alert("비밀번호가 일치하지 않습니다.");
+    }
+  };
   return (
     <Container>
       <Wrapper>
@@ -41,7 +54,9 @@ const SignupA = () => {
           <Text theme="signupContents2">가입이 완료되었습니다!</Text>
         </WrapperInner>
         <WrapperInner>
-          <Button theme="submitBtn">내 계좌 관리하러 가기</Button>
+          <Button theme="submitBtn" onClick={handleSubmit}>
+            내 계좌 관리하러 가기
+          </Button>
         </WrapperInner>
       </WrapperContent>
     </Container>
