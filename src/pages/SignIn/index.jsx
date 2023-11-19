@@ -9,7 +9,6 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { purple } from '@mui/material/colors';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Logo from "../../assets/images/logo.svg";
@@ -61,7 +60,7 @@ export default function SignIn() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <HomeAppBar />
+      <HomeAppBar label="sign in" />
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
