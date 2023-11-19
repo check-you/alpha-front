@@ -12,12 +12,22 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { purple } from '@mui/material/colors';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Logo from "../../assets/images/logo.svg";
 import { Image } from "./styled";
 
-const defaultTheme = createTheme();
+const defaultTheme = createTheme({
+  palette: {
+    primary: {
+      main: purple[500],
+    },
+    secondary: {
+      main: '#f44336',
+    },
+  },
+});
 
 export default function SignIn() {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -38,9 +48,6 @@ export default function SignIn() {
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
-
-        {/* 홈 */}
-
         <Box
           sx={{
             marginTop: 8,
