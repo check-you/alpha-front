@@ -2,10 +2,7 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import IconButton from '@mui/material/IconButton';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
-import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
@@ -31,10 +28,27 @@ const defaultTheme = createTheme({
 
 export default function SignIn() {
   const [showPassword, setShowPassword] = React.useState(false);
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [isEmailValid, setEmailValid] = React.useState(false);
+  const [isPasswordValid, setPasswordValid] = React.useState(false);
+
   const handleClickShowPassword = () => setShowPassword((show) => !show);
+
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
+
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+    setEmailValid(/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(event.target.value));
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+    setPasswordValid(event.target.value.length >= 8);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -66,18 +80,24 @@ export default function SignIn() {
               name="email"
               autoComplete="email"
               autoFocus
+              value={email}
+              onChange={handleEmailChange}
+              error={!isEmailValid && email !== ""}
+              helperText={!isEmailValid && email !== "" ? '유효한 이메일을 입력하세요.' : ''}
             />
-            <FormControl
+            <TextField
               margin="normal"
               fullWidth
               name="password"
-              type="password"
-              id="password">
-              <InputLabel htmlFor="outlined-adornment-password">비밀번호</InputLabel>
-              <OutlinedInput
-                id="outlined-adornment-password"
-                type={showPassword ? 'text' : 'password'}
-                endAdornment={
+              type={showPassword ? 'text' : 'password'}
+              id="password"
+              label="비밀번호"
+              value={password}
+              onChange={handlePasswordChange}
+              error={!isPasswordValid && password !== ""}
+              helperText={!isPasswordValid && password !== "" ? '비밀번호는 8자 이상이어야 합니다.' : ''}
+              InputProps={{
+                endAdornment:
                   <InputAdornment position="end">
                     <IconButton
                       aria-label="toggle password visibility"
@@ -88,16 +108,16 @@ export default function SignIn() {
                       {showPassword ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
                   </InputAdornment>
-                }
-                label="비밀번호"
-              />
-            </FormControl>
+              }}
+            />
+
             <Button
               type="submit"
               fullWidth
               variant="contained"
               href="/"
               sx={{ mt: 3, mb: 2 }}
+              disabled={!isEmailValid || !isPasswordValid}
             >
               로그인
             </Button>
