@@ -76,7 +76,7 @@ export const WrapperContent = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 90vw;
-  height: 70vh;
+  height: 73vh;
   background: white;
 `;
 export const WrapperInner = styled.div``;
@@ -86,6 +86,7 @@ export const WrapperInnerAgree = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-bottom: 2vh;
 `;
 export const DashBoard = styled.div`
   width: 50vh;
