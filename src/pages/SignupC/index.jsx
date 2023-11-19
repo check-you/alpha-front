@@ -27,7 +27,7 @@ const SignupA = () => {
       </Wrapper>
       <WrapperContent>
         <Wrapper2>
-          <Text> 가입 완료 </Text>
+          <Text theme="signupSubTitle"> 가입 완료 </Text>
           <NumWrapper>
             <NumImage src={first} alt="1" />
             <NumImage src={second} alt="2" />

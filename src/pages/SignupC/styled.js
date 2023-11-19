@@ -48,7 +48,7 @@ export const NumWrapper = styled.div`
 `;
 export const WrapperContent = styled.div`
   position: fixed;
-  top: 30vh;
+  top: 25vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

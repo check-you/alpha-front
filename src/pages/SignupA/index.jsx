@@ -33,7 +33,7 @@ const SignupA = () => {
       </Wrapper>
       <WrapperContent>
         <Wrapper2>
-          <Text> 이메일 인증 </Text>
+          <Text theme="signupSubTitle"> 이메일 인증 </Text>
           <NumWrapper>
             <NumImage src={first} alt="1" />
             <NumImage src={second} alt="2" />
