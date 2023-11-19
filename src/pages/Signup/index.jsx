@@ -111,7 +111,7 @@ const Signup = () => {
       </Wrapper>
       <WrapperInputOut>
         <Wrapper2>
-          <Text> 개인정보 입력 </Text>
+          <Text theme="signupSubTitle"> 개인정보 입력 </Text>
           <NumWrapper>
             <NumImage src={first} alt="1" />
             <NumImage src={second} alt="2" />
