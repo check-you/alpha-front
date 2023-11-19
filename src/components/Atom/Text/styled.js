@@ -68,6 +68,12 @@ const textStyles = {
     color: "white",
     lineHeight: "5vw",
   },
+  signupTitle: {
+    fontWeight: "bold",
+    fontSize: "8vw",
+    color: "#471AA0",
+    lineHeight: "5vw",
+  },
 };
 export const StyledText = styled.p`
   word-break: keep-all;

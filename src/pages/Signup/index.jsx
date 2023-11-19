@@ -5,13 +5,25 @@ import {
   Container,
   Image,
   Wrapper,
+  Wrapper2,
+  WrapperInput,
   SignupWrapper,
   SignUpInput,
+  BackgroundImage,
+  NumWrapper,
+  BackImage,
+  WrapperInputOut,
+  NumImage,
 } from "./styled";
 import signupEmail from "../../assets/images/SignupEmail.svg";
 import signupUser from "../../assets/images/signupUser.svg";
 import signupPhone from "../../assets/images/signupPhone.svg";
 import signupPwd from "../../assets/images/signupPwd.svg";
+import backIcon from "../../assets/images/backIcon.svg";
+import design1 from "../../assets/images/design1.svg";
+import first from "../../assets/images/firstChecked.svg";
+import second from "../../assets/images/secondNocheck.svg";
+import third from "../../assets/images/thirdNocheck.svg";
 const Signup = () => {
   const [userEmail, setuserEmail] = useState("");
   const [pw, setPw] = useState("");
@@ -92,55 +104,73 @@ const Signup = () => {
   };
   return (
     <Container>
-      <SignupWrapper>
-        <Image src={signupUser} alt="이름이미지" />
-        <SignUpInput
-          placeholder="이름"
-          onChange={onNicknameChange}
-          value={userNickname}
-        />
-      </SignupWrapper>
-      <SignupWrapper>
-        <Image src={signupPhone} alt="번호이미지" />
+      <Wrapper>
+        <BackImage src={backIcon} alt="돌아가기" />
+        <Text theme="signupTitle">Sign Up</Text>
+      </Wrapper>
+      <WrapperInputOut>
+        <Wrapper2>
+          <Text> 개인정보 입력 </Text>
+          <NumWrapper>
+            <NumImage src={first} alt="1" />
+            <NumImage src={second} alt="2" />
+            <NumImage src={third} alt="3" />
+          </NumWrapper>
+        </Wrapper2>
+        <BackgroundImage src={design1} alt="디자인" />
 
-        <SignUpInput
-          placeholder="핸드폰번호"
-          onChange={onPhoneChange}
-          value={userPhone}
-        />
-      </SignupWrapper>
-      <SignupWrapper>
-        <Image src={signupEmail} alt="이메일이미지" />
-        <SignUpInput
-          placeholder="이메일"
-          onChange={onEmailChange}
-          value={userEmail}
-        />
-      </SignupWrapper>
-      {emailError && <Text theme="emailerror">{emailError}</Text>}
-      <SignupWrapper>
-        <Image src={signupPwd} alt="비밀번호이미지" />
-        <SignUpInput
-          type="password"
-          placeholder="비밀번호"
-          onChange={onPwChange}
-          value={pw}
-        />
-      </SignupWrapper>
-      <SignupWrapper>
-        <Image src={signupPwd} alt="비밀번호이미지" />
+        <WrapperInput>
+          <SignupWrapper>
+            <Image src={signupUser} alt="이름이미지" />
+            <SignUpInput
+              placeholder="이름"
+              onChange={onNicknameChange}
+              value={userNickname}
+            />
+          </SignupWrapper>
+          <SignupWrapper>
+            <Image src={signupPhone} alt="번호이미지" />
 
-        <SignUpInput
-          type="password"
-          placeholder="비밀번호 확인"
-          onChange={onPwConfirmChange}
-          value={pwConfirm}
-        />
-      </SignupWrapper>
+            <SignUpInput
+              placeholder="핸드폰번호"
+              onChange={onPhoneChange}
+              value={userPhone}
+            />
+          </SignupWrapper>
+          <SignupWrapper>
+            <Image src={signupEmail} alt="이메일이미지" />
+            <SignUpInput
+              placeholder="이메일"
+              onChange={onEmailChange}
+              value={userEmail}
+            />
+          </SignupWrapper>
+          {emailError && <Text theme="emailerror">{emailError}</Text>}
+          <SignupWrapper>
+            <Image src={signupPwd} alt="비밀번호이미지" />
+            <SignUpInput
+              type="password"
+              placeholder="비밀번호"
+              onChange={onPwChange}
+              value={pw}
+            />
+          </SignupWrapper>
+          <SignupWrapper>
+            <Image src={signupPwd} alt="비밀번호이미지" />
 
-      <Button theme="submitBtn" onClick={handleSubmit}>
-        Sign up
-      </Button>
+            <SignUpInput
+              type="password"
+              placeholder="비밀번호 확인"
+              onChange={onPwConfirmChange}
+              value={pwConfirm}
+            />
+          </SignupWrapper>
+
+          <Button theme="submitBtn" onClick={handleSubmit}>
+            Sign up
+          </Button>
+        </WrapperInput>
+      </WrapperInputOut>
     </Container>
   );
 };

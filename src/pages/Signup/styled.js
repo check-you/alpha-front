@@ -1,19 +1,55 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 100vh;
+  width: 100vw;
+  height: 100vh;
   background: white;
-  border-radius: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   text-align: center;
-  width: 90vw;
-  margin-bottom: 2vh;
 `;
-export const Image = styled.img`
-10vw`;
+export const Image = styled.img``;
+export const NumImage = styled.img``;
+export const BackImage = styled.img`
+  width: 8vw;
+  margin-right: 3vw;
+`;
+export const BackgroundImage = styled.img`
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 2;
+`;
+export const Wrapper = styled.div`
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+`;
+export const Wrapper2 = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 3vh;
+`;
+export const NumWrapper = styled.div`
+  width: 25vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+export const WrapperInputOut = styled.div`
+  flex-direction: column;
+  justify-content: space-between;
+  width: 90vw;
+`;
+export const WrapperInput = styled.div``;
 export const DashBoard = styled.div`
   width: 50vh;
   background: #bb84e8;
@@ -32,21 +68,20 @@ export const DashBoard = styled.div`
 
 export const SignUpInput = styled.input`
   border: 1px solid rgba(0, 0, 0, 0);
-  width: 80vw;
+  width: 77vw;
   border-radius: 2px;
   height: 4vh;
   font-size: 0.8rem;
   &::placeholder {
     color: #d9d9d9;
-    padding-left: 15px;
+    padding-left: 1vw;
   }
 `;
 export const SignupWrapper = styled.div`
-  width: 100%;
   display: flex;
   justify-content: space-between;
   border: 1px solid #9747ff;
   border-radius: 10px;
-  padding: 5px;
+  padding: 1vw;
   margin-bottom: 3vh;
 `;
