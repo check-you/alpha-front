@@ -98,6 +98,7 @@ const Signup = () => {
       // axiosInstance.post("/auth/signup", {...})
       // .then(response => { ... })
       // .catch(error => { ... });
+      navigate("/signupa");
     } else {
       alert("비밀번호가 일치하지 않습니다.");
     }

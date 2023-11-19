@@ -46,14 +46,17 @@ export const NumWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
 `;
-export const WrapperInputOut = styled.div`
+export const WrapperContent = styled.div`
   position: fixed;
   top: 30vh;
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 90vw;
+  height: 40vh;
+  background: white;
 `;
-export const WrapperInput = styled.div``;
+export const WrapperInner = styled.div``;
 export const DashBoard = styled.div`
   width: 50vh;
   background: #bb84e8;
