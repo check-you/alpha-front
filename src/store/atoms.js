@@ -5,6 +5,14 @@ export const testAtom = atom({
   key: "test",
   default: 1,
 });
+export const signUpDataAtom = atom({
+  key: "signUpData",
+  default: {
+    signUpInfo: [],
+  },
+  effects_UNSTABLE: [persistAtom],
+});
+
 const { persistAtom } = recoilPersist({
   key: "recoil-persist",
   storage: sessionStorage,
@@ -15,10 +23,9 @@ export const loginState = atom({
   default: {
     isLogin: false,
     userInfo: {
-      userSeq: -999,
       email: "",
-      nickname: "",
-      profile: "",
+      username: "",
+      phone: "",
     },
   },
   effects_UNSTABLE: [persistAtom],

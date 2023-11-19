@@ -23,6 +23,14 @@ import first from "../../assets/images/firstNocheck.svg";
 import second from "../../assets/images/secondCheck.svg";
 import third from "../../assets/images/thirdNocheck.svg";
 const SignupA = () => {
+  const navigate = useNavigate();
+  const handleSubmit = () => {
+    if (true) {
+      navigate("/signupc");
+    } else {
+      alert("비밀번호가 일치하지 않습니다.");
+    }
+  };
   return (
     <Container>
       <Wrapper>
@@ -109,7 +117,9 @@ const SignupA = () => {
           </WrapperInnerList>
         </WrapperInnerAgree>
         <WrapperInner>
-          <Button theme="submitBtn">전체 동의합니다</Button>
+          <Button theme="submitBtn" onClick={handleSubmit}>
+            전체 동의합니다
+          </Button>
         </WrapperInner>
       </WrapperContent>
     </Container>
