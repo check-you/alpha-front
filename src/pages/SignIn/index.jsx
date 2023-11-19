@@ -3,23 +3,22 @@ import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
-import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { purple } from '@mui/material/colors';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Logo from "../../assets/images/logo.svg";
 import { Image } from "./styled";
+import { HomeAppBar } from '../../components';
 
 const defaultTheme = createTheme({
   palette: {
     primary: {
-      main: purple[500],
+      main: '#bb84e8',
     },
     secondary: {
       main: '#f44336',
@@ -61,6 +60,7 @@ export default function SignIn() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
+      <HomeAppBar label="sign in" />
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -117,12 +117,12 @@ export default function SignIn() {
               fullWidth
               variant="contained"
               href="/"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 3, mb: 2, py: 2 }}
               disabled={!isEmailValid || !isPasswordValid}
             >
               로그인
             </Button>
-            <Grid container>
+            <Grid container justifyContent="center" alignItems="center">
               <Link href="/signup" underline="none" variant="body2">
                 {"아직 계정이 없으신가요? 회원가입"}
               </Link>
