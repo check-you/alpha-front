@@ -45,15 +45,12 @@ const SignupA = () => {
         <WrapperInner>
           <Text theme="signupContents1">조현진 고객님</Text>
           <Text theme="signupContents2">
-            이메일로 본인 인증 확인 메일을 전송하였습니다.
-          </Text>
-          <Text theme="signupContents2">
-            해당 메일에서 인증을 완료해주세요.{" "}
+            이메일로 본인 인증을 진행해주세요.
           </Text>
         </WrapperInner>
         <WrapperInner>
           <Button theme="submitBtn" onClick={handleSubmit}>
-            인증 완료
+            이메일 보내기
           </Button>
         </WrapperInner>
       </WrapperContent>
