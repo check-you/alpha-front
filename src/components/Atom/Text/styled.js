@@ -52,8 +52,14 @@ const textStyles = {
   },
   accountCorp: {
     fontWeight: "normal",
-    fontSize: "3vw",
+    fontSize: "3.5vw",
     color: "black",
+    lineHeight: "5vw",
+  },
+  accountAddBtn: {
+    fontWeight: "normal",
+    fontSize: "3.5vw",
+    color: "white",
     lineHeight: "5vw",
   },
   accountNum: {
@@ -65,7 +71,19 @@ const textStyles = {
   dashBoard: {
     fontWeight: "normal",
     fontSize: "2.5vw",
-    color: "white",
+    color: "black",
+    lineHeight: "5vw",
+  },
+  dashBoardName: {
+    fontWeight: "normal",
+    fontSize: "6vw",
+    color: "black",
+    lineHeight: "5vw",
+  },
+  dashBoardInfo: {
+    fontWeight: "normal",
+    fontSize: "4vw",
+    color: "black",
     lineHeight: "5vw",
   },
   signupTitle: {
@@ -83,6 +101,12 @@ const textStyles = {
   signupContents2: {
     fontWeight: "bold",
     fontSize: "3vw",
+    color: "black",
+    lineHeight: "5vw",
+  },
+  title: {
+    fontWeight: "bold",
+    fontSize: "4.5vw",
     color: "black",
     lineHeight: "5vw",
   },

@@ -6,7 +6,7 @@ const AddAccount = ({ theme, onClick, children }) => {
   return (
     <Container>
       <LogoImage src={addbtn} alt="계좌추가" />
-      <Text theme="accountCorp">계좌 연결 추가하기</Text>
+      <Text theme="accountAddBtn">계좌 연결 추가하기</Text>
     </Container>
   );
 };
