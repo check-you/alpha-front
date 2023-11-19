@@ -10,6 +10,14 @@ const ButtonStyles = {
     border: "2px solid #409DFF",
     gap: "16px",
   },
+  submitBtn: {
+    width: "90vw",
+    borderRadius: "10px",
+    background: "#BB84E8",
+    color: "white",
+    gap: "16px",
+    padding: "2vh",
+  },
 };
 
 export const StyledButton = styled.button`
@@ -20,8 +28,9 @@ export const StyledButton = styled.button`
 
   ,
   &:hover {
-    transform: scale(1);
+    transform: scale(1.01);
     cursor: pointer;
+    background: #7e4ce180;
   }
 `;
 

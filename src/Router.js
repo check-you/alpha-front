@@ -4,6 +4,9 @@ import Main from "./pages/Main";
 import NotFound from "./pages/NotFound";
 import LinkedAccounts from "./pages/LinkedAccounts";
 import Signup from "./pages/Signup";
+import SignupA from "./pages/SignupA";
+import SignupB from "./pages/SignupB";
+import SignupC from "./pages/SignupC";
 const Router = () => {
   return (
     <BrowserRouter>
@@ -11,6 +14,9 @@ const Router = () => {
         <Route path="/" element={<Main />} />
         <Route path="/linkedaccounts" element={<LinkedAccounts />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/signupa" element={<SignupA />} />
+        <Route path="/signupb" element={<SignupB />} />
+        <Route path="/signupc" element={<SignupC />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
