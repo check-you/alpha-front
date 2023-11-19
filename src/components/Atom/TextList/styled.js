@@ -38,35 +38,17 @@ const textStyles = {
     fontSize: "6.5vw",
     color: "white",
   },
-  transactioninfo1: {
+  transactioninfoContents: {
     fontWeight: "normal",
-    fontSize: "3vw",
-    color: "#471AA0",
-  },
-  transactioninfo2: {
-    fontWeight: "bold",
-    fontSize: "3vw",
-    color: "#471AA0",
-  },
-  transactionTableTitle: {
-    fontWeight: "normal",
-    fontSize: "3vw",
+    fontSize: "2.5vw",
     color: "white",
+    lineHeight: "5vw",
   },
-  transactionTableContent: {
+  transactioninfoTax1: {
     fontWeight: "normal",
     fontSize: "3vw",
     color: "black",
-  },
-  transactionUp: {
-    fontWeight: "normal",
-    fontSize: "3vw",
-    color: "#FF0000",
-  },
-  transactionDown: {
-    fontWeight: "normal",
-    fontSize: "3vw",
-    color: "#0047FF",
+    lineHeight: "5vw",
   },
   accountCorp: {
     fontWeight: "normal",
@@ -128,13 +110,27 @@ const textStyles = {
     color: "black",
     lineHeight: "5vw",
   },
-  subTitle: {
-    fontWeight: "bold",
-    fontSize: "6vw",
-    color: "#471AA0",
-    lineHeight: "5vw",
-  },
 };
+export const Container = styled.div`
+  width: 90 vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 2vh;
+`;
+export const InsideContianer1 = styled.div`
+  width: 22vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+`;
+
+export const InsideContianer2 = styled.div`
+  width: 40vw;
+  padding-left: 10vw;
+  display: flex;
+  flex-direction: row;
+`;
 export const StyledText = styled.p`
   word-break: keep-all;
   ${(props) => textStyles[props.theme]}
