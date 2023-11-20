@@ -90,6 +90,11 @@ export const Button = styled.button`
   font-size: 1rem;
   cursor: pointer;
 `;
+export const Error = styled.div`
+  color: #fc1919;
+  text-align: left;
+  height: 1vh;
+`;
 
 export const NoticeWrapper = styled.div`
   text-align: left;
@@ -105,10 +110,14 @@ export const NoticeWrapper = styled.div`
 `;
 
 export const NoticeWrapper2 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
   text-align: center;
   font-size: 1rem;
   width: 80vw;
-  height: 20vh;
+  height: 10vh;
   font-weight: light;
   color: #471aa0;
   & > :first-child {
