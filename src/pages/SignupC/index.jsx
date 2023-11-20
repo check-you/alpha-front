@@ -18,7 +18,7 @@ import design1 from "../../assets/images/design1.svg";
 import first from "../../assets/images/firstNocheck.svg";
 import second from "../../assets/images/secondNocheck.svg";
 import third from "../../assets/images/thirdCheck.svg";
-const SignupA = () => {
+const SignupC = () => {
   const navigate = useNavigate();
   const handleSubmit = () => {
     if (true) {
@@ -63,4 +63,4 @@ const SignupA = () => {
   );
 };
 
-export default SignupA;
+export default SignupC;
