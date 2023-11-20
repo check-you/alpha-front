@@ -9,11 +9,13 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { purple } from "@mui/material/colors";
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Logo from "../../assets/images/logo.svg";
 import { Image } from "./styled";
 import { HomeAppBar } from '../../components';
+import axios from "axios"; 
 
 const defaultTheme = createTheme({
   palette: {
@@ -49,13 +51,29 @@ export default function SignIn() {
     setPasswordValid(event.target.value.length >= 8);
   };
 
-  const handleSubmit = (event) => {
+  // async 키워드 추가
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    
+    try {
+      const response = await axios.post("http://localhost:8080/api/user/login", {
+        email: email,
+        password: password,
+      });
+
+      if (response.status === 200) {
+        // 로그인 성공 처리
+        const token = response.data.token;
+
+        // 토큰을 안전하게 저장 (localStorage 등 사용)
+        localStorage.setItem("token", token);
+      } else {
+        // 로그인 실패 처리
+        console.error("로그인 실패");
+      }
+    } catch (error) {
+      console.error("로그인 중 오류:", error);
+    }
   };
 
   return (
