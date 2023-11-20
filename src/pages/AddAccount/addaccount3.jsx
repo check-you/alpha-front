@@ -1,10 +1,9 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
-import { Text, InputBox } from "../../components";
+import { Text, InputBox, BackAppBar } from "../../components";
 import {
     Container,
     Image,
-    Wrapper,
     Wrapper2,
     WrapperInputOut,
     BackgroundImage,
@@ -34,10 +33,10 @@ function AddAccount3({ customerName = "조현진", bank = "KB증권", accountNum
       };
     return (
         <Container>
-        <Wrapper>
+        <BackAppBar>
           <BackImage src={backIcon} alt="돌아가기" />
           <Text theme="signupTitle">계좌 연결 추가</Text>
-        </Wrapper>
+        </BackAppBar>
         <WrapperInputOut>
           <Wrapper2>
             <Text> 개좌 연결 완료 </Text>
