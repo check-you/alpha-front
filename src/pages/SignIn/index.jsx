@@ -1,20 +1,20 @@
-import * as React from 'react';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import IconButton from '@mui/material/IconButton';
-import InputAdornment from '@mui/material/InputAdornment';
-import TextField from '@mui/material/TextField';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { purple } from '@mui/material/colors';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import * as React from "react";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import IconButton from "@mui/material/IconButton";
+import InputAdornment from "@mui/material/InputAdornment";
+import TextField from "@mui/material/TextField";
+import Link from "@mui/material/Link";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { purple } from "@mui/material/colors";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Logo from "../../assets/images/logo.svg";
 import { Image } from "./styled";
-import { HomeAppBar } from '../../components';
+import { HomeAppBar } from "../../components";
 
 const defaultTheme = createTheme({
   palette: {
@@ -22,7 +22,7 @@ const defaultTheme = createTheme({
       main: purple[500],
     },
     secondary: {
-      main: '#f44336',
+      main: "#f44336",
     },
   },
 });
@@ -42,7 +42,9 @@ export default function SignIn() {
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
-    setEmailValid(/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(event.target.value));
+    setEmailValid(
+      /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(event.target.value)
+    );
   };
 
   const handlePasswordChange = (event) => {
@@ -54,8 +56,8 @@ export default function SignIn() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
-      email: data.get('email'),
-      password: data.get('password'),
+      email: data.get("email"),
+      password: data.get("password"),
     });
   };
 
@@ -67,13 +69,18 @@ export default function SignIn() {
         <Box
           sx={{
             marginTop: 20,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
           }}
         >
           <Image src={Logo} alt="로고이미지" />
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box
+            component="form"
+            onSubmit={handleSubmit}
+            noValidate
+            sx={{ mt: 1 }}
+          >
             <TextField
               margin="normal"
               fullWidth
@@ -85,21 +92,29 @@ export default function SignIn() {
               value={email}
               onChange={handleEmailChange}
               error={!isEmailValid && email !== ""}
-              helperText={!isEmailValid && email !== "" ? '유효한 이메일을 입력하세요.' : ''}
+              helperText={
+                !isEmailValid && email !== ""
+                  ? "유효한 이메일을 입력하세요."
+                  : ""
+              }
             />
             <TextField
               margin="normal"
               fullWidth
               name="password"
-              type={showPassword ? 'text' : 'password'}
+              type={showPassword ? "text" : "password"}
               id="password"
               label="비밀번호"
               value={password}
               onChange={handlePasswordChange}
               error={!isPasswordValid && password !== ""}
-              helperText={!isPasswordValid && password !== "" ? '비밀번호는 8자 이상이어야 합니다.' : ''}
+              helperText={
+                !isPasswordValid && password !== ""
+                  ? "비밀번호는 8자 이상이어야 합니다."
+                  : ""
+              }
               InputProps={{
-                endAdornment:
+                endAdornment: (
                   <InputAdornment position="end">
                     <IconButton
                       aria-label="toggle password visibility"
@@ -110,6 +125,7 @@ export default function SignIn() {
                       {showPassword ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
                   </InputAdornment>
+                ),
               }}
             />
 
