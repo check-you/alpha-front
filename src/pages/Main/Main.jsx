@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Logo from "../../assets/images/logo.svg";
+import Logo from "../../assets/images/DoubleCheck.svg";
+// import Logo from "../../assets/images/logo.svg";
 import {
   Container,
   Image,
@@ -21,7 +22,7 @@ import Group from "../../assets/images/sosock.svg";
 import ID from "../../assets/images/saupja.svg";
 
 const Main = () => {
-  const [name, setName] = useState("");
+  const [userName, setUserName] = useState("");
   const [financialInstitution, setFinancialInstitution] = useState("");
   const [transactionNumber, setTransactionNumber] = useState("");
   const [affiliation, setAffiliation] = useState("");
@@ -51,14 +52,14 @@ const Main = () => {
     }
   };
   const handleSearch = () => {
-    if (!name || !financialInstitution || !transactionNumber) {
+    if (!userName || !financialInstitution || !transactionNumber) {
       setShowError(true);
     } else {
       setShowError(false);
       console.log("조회 버튼이 클릭되었습니다.");
       // 여기에 조회 로직 추가
       navigate(
-        `/Transaction?name=${name}&financialInstitution=${financialInstitution}&transactionNumber=${transactionNumber}`
+        `/Transaction?userName=${userName}&financialInstitution=${financialInstitution}&transactionNumber=${transactionNumber}`
       );
     }
   };
@@ -79,11 +80,11 @@ const Main = () => {
       <SignupWrapper>
         <Image src={User} alt="이름이미지" />
         <SignUpInput
-          id="name"
+          id="userName"
           type="text"
           placeholder="*이름"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          value={userName}
+          onChange={(e) => setUserName(e.target.value)}
         />
       </SignupWrapper>
 
