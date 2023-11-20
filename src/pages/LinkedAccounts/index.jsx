@@ -55,6 +55,7 @@ const LinkedAccounts = () => {
       .then((response) => {
         console.log(response.data);
         alert("연결된 계좌 리스트!:D");
+
       })
       .catch((e) => {
         console.log(e);
@@ -92,6 +93,7 @@ const LinkedAccounts = () => {
   useEffect(() => {
     getTrnasactions();
   }, []);
+
   return (
     <Container>
       {isDeleteModalOpen && (
