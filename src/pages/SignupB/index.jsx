@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Text, Button } from "../../components";
+import { Text, Button, Modal } from "../../components";
 import {
   Container,
   Image,
@@ -22,8 +22,19 @@ import design1 from "../../assets/images/design1.svg";
 import first from "../../assets/images/firstNocheck.svg";
 import second from "../../assets/images/secondCheck.svg";
 import third from "../../assets/images/thirdNocheck.svg";
-const SignupA = () => {
+const SignupB = () => {
   const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(true);
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+  const handleBackgroundClick = (e) => {
+    // 배경 클릭 시 모달 닫기
+    if (e.target.classList.contains("modal-background")) {
+      closeModal();
+    }
+  };
   const handleSubmit = () => {
     if (true) {
       navigate("/signupc");
@@ -32,7 +43,10 @@ const SignupA = () => {
     }
   };
   return (
-    <Container>
+    <Container onClick={handleBackgroundClick}>
+      {isModalOpen && (
+        <Modal clickHandler={closeModal}>본인 인증이 완료되었습니다</Modal>
+      )}
       <Wrapper>
         <BackImage src={backIcon} alt="돌아가기" />
         <Text theme="signupTitle">Sign Up</Text>
@@ -126,4 +140,4 @@ const SignupA = () => {
   );
 };
 
-export default SignupA;
+export default SignupB;
