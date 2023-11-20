@@ -52,6 +52,9 @@ export const LinkButton = styled.a`
 
 export const BoldLink = styled(LinkButton)`
   color: #6f1c7e; /* 진한 보라색 */
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const ThinLink = styled(LinkButton)`

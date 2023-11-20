@@ -19,8 +19,10 @@ import first from "../../assets/images/firstChecked.svg";
 import second from "../../assets/images/secondNocheck.svg";
 import third from "../../assets/images/thirdNocheck.svg";
 const SignupA = () => {
+  const navigate = useNavigate();
   const handleSubmit = () => {
     if (true) {
+      navigate("/signupb");
     } else {
       alert("비밀번호가 일치하지 않습니다.");
     }
@@ -33,7 +35,7 @@ const SignupA = () => {
       </Wrapper>
       <WrapperContent>
         <Wrapper2>
-          <Text> 이메일 인증 </Text>
+          <Text theme="signupSubTitle"> 이메일 인증 </Text>
           <NumWrapper>
             <NumImage src={first} alt="1" />
             <NumImage src={second} alt="2" />

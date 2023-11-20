@@ -139,6 +139,11 @@ const textStyles = {
     fontSize: "2vw",
     color: "black",
   },
+  signupSubTitle: {
+    fontWeight: "bold",
+    fontSize: "4.5vw",
+    color: "#471AA0",
+  },
 };
 export const StyledText = styled.p`
   word-break: keep-all;
