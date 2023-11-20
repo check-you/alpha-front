@@ -29,6 +29,21 @@ const LinkedAccounts = () => {
   const closeDeleteModal = () => {
     setIsDeleteModalOpen(false);
   };
+  /////////////////////// 헤더에 토큰 넣기
+  // const deleteAccountApi = async (accountToDelete, accessToken) => {
+  //   axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+
+  //   axiosInstance
+  //     .delete("/api/accounts", { data: { account: accountToDelete } })
+  //     .then((response) => {
+  //       console.log(response.data);
+  //       alert(`계좌 ${accountToDelete}가 삭제되었습니다.`);
+  //       setIsDeleteModalOpen(false);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
   const deleteAccountApi = async (accountToDelete) => {
     axiosInstance
       .delete("/api/accounts", { account: accountToDelete })
@@ -55,7 +70,6 @@ const LinkedAccounts = () => {
       .then((response) => {
         console.log(response.data);
         alert("연결된 계좌 리스트!:D");
-
       })
       .catch((e) => {
         console.log(e);
