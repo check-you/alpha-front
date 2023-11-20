@@ -58,32 +58,23 @@ const AddAccount = () => {
         >
           <option value="">금융기관을 선택해주세요</option>
           <option value="신한투자증권">신한투자증권</option>
-          <option value="KB증권">KB증권</option>
-          <option value="NH투자증권">NH투자증권</option>
-          <option value="SK증권">SK증권</option>
-          <option value="골든브릿지투자증권">골든브릿지투자증권</option>
           <option value="교보증권">교보증권</option>
           <option value="대신증권">대신증권</option>
-          <option value="미래에셋대우">미래에셋대우</option>
-          <option value="미래에셋증권">미래에셋증권</option>21`az`
-          <option value="부국증권">부국증권</option>
+          <option value="SK증권">DB금융투자</option>
+          <option value="메리츠증권">메리츠증권</option>
           <option value="삼성증권">삼성증권</option>
-          <option value="신영증권">신영증권</option>
-          <option value="삼성증권">삼성증권</option>
+          <option value="에스케이증권">에스케이증권</option>
+          <option value="현대차증권">현대차증권</option>
+          <option value="NH투자증권">NH투자증권</option>
           <option value="유진투자증권">유진투자증권</option>
-          <option value="유화증권">유화증권</option>
+          <option value=" 이베스트투자증권"> 이베스트투자증권</option>
           <option value="키움증권">키움증권</option>
-          <option value="IBK투자증권">IBK투자증권</option>
+          <option value="하이투자증권">하이투자증권</option>
+          <option value="한국투자증권">한국투자증권</option>
+          <option value="  한화투자증권"> 한화투자증권</option>
+          <option value="KB증권">KB증권</option>
+          <option value="KTB투자증권">KTB투자증권</option>
           <option value="하나증권">하나증권</option>
-          <option value="유안타증권">유안타증권</option>
-          <option value="한국투자증권">한국투자증권</option>
-          <option value="흥국증권">흥국증권</option>
-          <option value="이베스트투자증권">이베스트투자증권</option>
-          <option value="한국증권금융">한국증권금융</option>
-          <option value="한국증권금융">한국증권금융</option>
-          <option value="한국증권금융">한국증권금융</option>
-          <option value="한국증권금융">한국증권금융</option>
-          <option value="한국투자증권">한국투자증권</option>
         </SignUpSelectBox>
       </SignupWrapper>
       <SignupWrapper>
