@@ -37,6 +37,10 @@ export const Wrapper2 = styled.div`
   justify-content: space-between;
   align-items: center;
   text-align: center;
+  /* Apply purple color to the first child element */
+  & :first-child {
+    color: #471aa0;
+  }
 `;
 export const NumWrapper = styled.div`
   width: 25vw;
@@ -96,4 +100,22 @@ export const NoticeWrapper = styled.div`
     color: black; /* You can adjust the color if needed */
     margin: 10px 0px;
   }
+`;
+
+export const NoticeWrapper2 = styled.div`
+  text-align: center;
+  font-size: 1rem;
+  width: 80vw;
+  height: 20vh;
+  font-weight: light;
+  color: #471aa0;
+  & > :first-child {
+    font-weight: bold;
+    color: #471aa0;
+    margin: 10px 0px;
+  }
+`;
+
+export const Pink = styled.span`
+  color: #ff1abf;
 `;
