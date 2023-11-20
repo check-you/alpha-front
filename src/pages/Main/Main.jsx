@@ -13,6 +13,7 @@ import {
   LogoImage,
   ErrorMessage,
 } from "./styled";
+import { AlertModal } from "../../components";
 import User from "../../assets/images/signupUser.svg";
 import BackList from "../../assets/images/banklist.svg";
 import AccountNum from "../../assets/images/account.svg";
@@ -26,21 +27,53 @@ const Main = () => {
   const [affiliation, setAffiliation] = useState("");
   const [userNumber, setUserNumber] = useState("");
   const [showError, setShowError] = useState(false);
+  const [isModalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
-
+  const modalOpen = () => {
+    setModalOpen(true);
+  };
+  const modalClose = () => {
+    setModalOpen(false);
+  };
+  const handleCloseAlert = () => {
+    modalClose();
+  };
+  const handleGotoLogin = () => {
+    navigate("/signin");
+  };
+  const handleIsLogin = () => {
+    if (true) {
+      modalOpen();
+      // 로그인 여부 확인해서 들어오기!!!!
+      // navigate("/linkedaccounts");
+    } else {
+      modalOpen();
+    }
+  };
   const handleSearch = () => {
     if (!name || !financialInstitution || !transactionNumber) {
       setShowError(true);
     } else {
       setShowError(false);
-      console.log('조회 버튼이 클릭되었습니다.');
+      console.log("조회 버튼이 클릭되었습니다.");
       // 여기에 조회 로직 추가
-      navigate(`/result?name=${name}&financialInstitution=${financialInstitution}&transactionNumber=${transactionNumber}`);
+      navigate(
+        `/result?name=${name}&financialInstitution=${financialInstitution}&transactionNumber=${transactionNumber}`
+      );
     }
   };
 
   return (
     <Container>
+      {isModalOpen && (
+        <AlertModal
+          closeHandler={handleCloseAlert}
+          LoginHandler={handleGotoLogin}
+        >
+          로그인 사용자만 이용할 수 있습니다
+        </AlertModal>
+      )}
+
       <LogoImage src={Logo} alt="로고이미지" className="logo" />
 
       <SignupWrapper>
@@ -98,15 +131,15 @@ const Main = () => {
         />
       </SignupWrapper>
       {showError && (
-        <ErrorMessage>＊이름, 금융기관, 거래번호는 필수 입력값입니다.</ErrorMessage>
+        <ErrorMessage>
+          ＊이름, 금융기관, 거래번호는 필수 입력값입니다.
+        </ErrorMessage>
       )}
       <Button onClick={handleSearch}>조회</Button>
 
-    
-
       <LinkWrapper>
-        <ThinLink href="#">투자자문업자이신가요?</ThinLink>
-        <BoldLink href="/linkedaccounts">투자자문업자홈</BoldLink>
+        <ThinLink>투자자문업자이신가요?</ThinLink>
+        <BoldLink onClick={handleIsLogin}>투자자문업자홈</BoldLink>
       </LinkWrapper>
     </Container>
   );

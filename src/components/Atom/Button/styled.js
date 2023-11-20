@@ -26,6 +26,22 @@ const ButtonStyles = {
     gap: "16px",
     padding: "1.3vh",
   },
+  closeBtnAlert: {
+    width: "25vw",
+    borderRadius: "10px",
+    background: "#BB84E8",
+    color: "white",
+    gap: "16px",
+    padding: "1.3vh",
+  },
+  loginBtnAlert: {
+    width: "25vw",
+    borderRadius: "10px",
+    background: "#BB84E8",
+    color: "white",
+    gap: "16px",
+    padding: "1.3vh",
+  },
 };
 
 export const StyledButton = styled.button`

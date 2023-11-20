@@ -8,3 +8,4 @@ export { default as AddAccountBtn } from "./Molecule/AddAccountBtn";
 export { default as InputBox } from "./Molecule/InputBox";
 export { default as TransactionItems } from "./Molecule/TransactionItems";
 export { default as Modal } from "./Organism/Modal";
+export { default as AlertModal } from "./Organism/AlertModal";
