@@ -44,6 +44,7 @@ export const WrapperInputOut = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 90vw;
+  height: 10vh;
 `;
 export const WrapperInput = styled.div`
   height: 50vh;
@@ -72,7 +73,8 @@ export const SignupWrapper = styled.div`
 export const Button = styled.button`
   background-color: #9747ff;
   color: white;
-  width: 80vw;
+  width: 88vw;
+  height: 8vh;
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
@@ -109,4 +111,8 @@ export const NoticeWrapper2 = styled.div`
 
 export const Pink = styled.span`
   color: #ff1abf;
+`;
+
+export const ForLayout = styled.span`
+  height: 20vh;
 `;
