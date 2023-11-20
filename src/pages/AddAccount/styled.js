@@ -77,9 +77,23 @@ export const SignupWrapper = styled.div`
 export const Button = styled.button`
   background-color: #9747ff;
   color: white;
+  width: 80vw;
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
   font-size: 1rem;
   cursor: pointer;
+`;
+
+export const NoticeWrapper = styled.div`
+  text-align: left;
+  color: grey;
+  font-size: 1rem;
+  width: 80vw;
+  height: 20vh;
+  & > :first-child {
+    font-weight: bold;
+    color: black; /* You can adjust the color if needed */
+    margin: 10px 0px;
+  }
 `;

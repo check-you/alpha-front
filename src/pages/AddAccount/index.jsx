@@ -11,11 +11,12 @@ import {
   BackImage,
   NumImage,
   SignupWrapper,
+  NoticeWrapper,
   SignUpInput,
   Button,
 } from "./styled";
 import BackList from "../../assets/images/banklist.svg";
-import backIcon from "../../assets/images/backIcon.svg";  // Add this line
+import backIcon from "../../assets/images/backIcon.svg";  
 import first from "../../assets/images/firstChecked.svg";
 import second from "../../assets/images/secondNocheck.svg";
 import third from "../../assets/images/thirdNocheck.svg";
@@ -67,14 +68,20 @@ const AddAccount = () => {
           onChange={(e) => setTransactionNumber(e.target.value)}
         />
       </SignupWrapper>
-      <Text theme="bold">계좌 인증 유의사항</Text>
-      <Text>※ 반드시 출금 및 거래 내역을 확인할 수 있는 계좌를 등록하세요.</Text>
-      <Text>
-        ※ 등록한 계좌 외에 타 계좌로 출금하시려면 신한 알파에서 모바일 OTP를 발급받으시거나 타기관 OTP 등록을 해주세요.
-      </Text>
-      <Text>
-        ※ 은행 공동망 점검시간은 인증을 진행할 수 없습니다. 점심시간 이후에 시도해주시기 바랍니다.
-      </Text>
+      
+      <NoticeWrapper>
+        <Text>계좌 인증 유의사항</Text>
+        <Text>
+          ※ 반드시 출금 및 거래 내역을 확인할 수 있는 계좌를 등록하세요.
+        </Text>
+        <Text>
+          ※ 등록한 계좌 외에 타 계좌로 출금하시려면 신한 알파에서 모바일 OTP를 발급받으시거나 타기관 OTP 등록을 해주세요.
+        </Text>
+        <Text >
+          ※ 은행 공동망 점검시간은 인증을 진행할 수 없습니다. 점심시간 이후에 시도해주시기 바랍니다.
+        </Text>
+      </NoticeWrapper>
+
       <Button>다음</Button>
     </Container>
   );

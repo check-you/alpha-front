@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Logo from "../../assets/images/logo.svg";
 import {
   Container,
@@ -25,6 +26,7 @@ const Main = () => {
   const [affiliation, setAffiliation] = useState("");
   const [userNumber, setUserNumber] = useState("");
   const [showError, setShowError] = useState(false);
+  const navigate = useNavigate();
 
   const handleSearch = () => {
     if (!name || !financialInstitution || !transactionNumber) {
@@ -33,6 +35,7 @@ const Main = () => {
       setShowError(false);
       console.log('조회 버튼이 클릭되었습니다.');
       // 여기에 조회 로직 추가
+      navigate(`/result?name=${name}&financialInstitution=${financialInstitution}&transactionNumber=${transactionNumber}`);
     }
   };
 
@@ -103,7 +106,7 @@ const Main = () => {
 
       <LinkWrapper>
         <ThinLink href="#">투자자문업자이신가요?</ThinLink>
-        <BoldLink href="/투자자문업자홈">투자자문업자홈</BoldLink>
+        <BoldLink href="/linkedaccounts">투자자문업자홈</BoldLink>
       </LinkWrapper>
     </Container>
   );

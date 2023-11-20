@@ -10,7 +10,7 @@ import SignupC from "./pages/SignupC";
 import SignIn from "./pages/SignIn";
 import AddAccount from "./pages/AddAccount";
 import Transaction from "./pages/Transaction";
-
+import Result from "./pages/Result/Result";
 const Router = () => {
   return (
     <BrowserRouter>
@@ -24,6 +24,7 @@ const Router = () => {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/addaccount" element={<AddAccount />} />
         <Route path="/transaction" element={<Transaction />} />
+        <Route path="/result" element={<Result />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
