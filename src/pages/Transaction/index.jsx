@@ -1,6 +1,13 @@
 import React, { useState } from "react";
+import { axiosInstance } from "../../apis";
 import { useNavigate } from "react-router-dom";
-import { Text, Button, TextList, TransactionItems, BackAppBar } from "../../components";
+import {
+  Text,
+  Button,
+  TextList,
+  TransactionItems,
+  BackAppBar,
+} from "../../components";
 import {
   Container,
   Wrapper2,
@@ -15,6 +22,28 @@ import {
 import design1 from "../../assets/images/design1.svg";
 
 const Transaction = () => {
+  const getTrnasactions = async () => {
+    axiosInstance
+      .post("/api/main/search", {
+        name: userName,
+        bank: financialInstitution,
+        account: transactionNumber,
+        belong: affiliation,
+        businessCode: userNumber,
+      })
+      .then((response) => {
+        console.log(response.data);
+        alert("거래내역 가져오기완료!:D");
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+
+  useEffect(() => {
+    getTrnasactions();
+  }, []);
+
   return (
     <Container>
       <BackAppBar label="조회 결과" />
