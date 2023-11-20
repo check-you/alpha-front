@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { axiosInstance } from "../../apis";
+
 import { useNavigate } from "react-router-dom";
 import { Text, Button, BackAppBar } from "../../components";
 import {
@@ -21,22 +23,22 @@ import design1 from "../../assets/images/design1.svg";
 import first from "../../assets/images/firstChecked.svg";
 import second from "../../assets/images/secondNocheck.svg";
 import third from "../../assets/images/thirdNocheck.svg";
+
 const Signup = () => {
   const [userEmail, setuserEmail] = useState("");
   const [pw, setPw] = useState("");
   const [pwConfirm, setPwConfirm] = useState(""); // 추가: 비밀번호 확인을 위한 상태값
-  const [userNickname, setUserNickname] = useState("");
+  const [userName, setUserName] = useState("");
   const [userPhone, SetUserPhone] = useState("");
   const [emailError, setEmailError] = useState("");
   const [phoneError, setPhoneError] = useState("");
-
   const navigate = useNavigate();
 
   const isButtonDisabled =
     pw !== pwConfirm ||
     pw === "" ||
     userEmail === "" ||
-    userNickname === "" ||
+    userName === "" ||
     userPhone === "";
   const onPwConfirmChange = (e) => {
     // 추가: 비밀번호 확인용 입력값 변경 시
@@ -47,8 +49,8 @@ const Signup = () => {
     setPw(e.target.value);
   };
 
-  const onNicknameChange = (e) => {
-    setUserNickname(e.target.value);
+  const onNameChange = (e) => {
+    setUserName(e.target.value);
   };
 
   const onPhoneChange = (e) => {
@@ -62,10 +64,10 @@ const Signup = () => {
     SetUserPhone(onlyNums);
   };
 
-  const emailCheck = (username) => {
+  const emailCheck = (userEmail) => {
     const emailRegEx =
       /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/;
-    const isValid = emailRegEx.test(username);
+    const isValid = emailRegEx.test(userEmail);
     if (!isValid) {
       setEmailError("올바른 이메일 주소가 아닙니다.");
     } else {
@@ -78,31 +80,27 @@ const Signup = () => {
     emailCheck(e.target.value);
   };
 
-  // const onSignUp = async () => {
-  //   axiosInstance
-  //     .post("/auth/signup", {
-  //       email: userEmail,
-  //       nickname: userNickname,
-  //       userPw: pw,
-  //       age: userAge,
-  //     })
-  //     .then((response) => {
-  //       console.log(response.data);
-  //       alert("가입이 완료되었습니다. 로그인을 진행해주세요.");
-  //       navigate("/login");
-  //     })
-  //     .catch((e) => {
-  //       console.log(e);
-  //     });
-  // };
+  const onSignUp = async () => {
+    axiosInstance
+      .post("/api/user/signIn", {
+        name: userName,
+        phoneNumber: userPhone,
+        email: userEmail,
+        userPw: pw,
+      })
+      .then((response) => {
+        console.log(response.data);
+        alert("가입이 완료되었습니다. 로그인을 진행해주세요.");
+        navigate("/signupa");
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
 
   const handleSubmit = () => {
     if (pw === pwConfirm) {
-      // 수정: 비밀번호 확인
-      // 실행할 코드 (예: 회원가입 요청)
-      // axiosInstance.post("/auth/signup", {...})
-      // .then(response => { ... })
-      // .catch(error => { ... });
+      // onSignup();
       navigate("/signupa");
     } else {
       alert("비밀번호가 일치하지 않습니다.");
@@ -127,8 +125,8 @@ const Signup = () => {
             <Image src={signupUser} alt="이름이미지" />
             <SignUpInput
               placeholder="이름"
-              onChange={onNicknameChange}
-              value={userNickname}
+              onChange={onNameChange}
+              value={userName}
             />
           </SignupWrapper>
           <SignupWrapper>
@@ -161,7 +159,6 @@ const Signup = () => {
           </SignupWrapper>
           <SignupWrapper>
             <Image src={signupPwd} alt="비밀번호이미지" />
-
             <SignUpInput
               type="password"
               placeholder="비밀번호 확인"

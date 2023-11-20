@@ -1,5 +1,11 @@
-import React from "react";
-import { Text, Button, LinkedAccount, AddAccountBtn, HomeAppBar } from "../../components";
+import React, { useEffect } from "react";
+import { axiosInstance } from "../../apis";
+import {
+  Text,
+  LinkedAccount,
+  AddAccountBtn,
+  HomeAppBar,
+} from "../../components";
 import {
   Container,
   TitleWrapper,
@@ -11,6 +17,28 @@ import {
   AddBtnWrapper,
 } from "./styled";
 const LinkedAccounts = () => {
+  const getAccounts = async () => {
+    axiosInstance
+      .post("/api/main/search", {
+        name: userName,
+        bank: financialInstitution,
+        account: transactionNumber,
+        belong: affiliation,
+        businessCode: userNumber,
+      })
+      .then((response) => {
+        console.log(response.data);
+        alert("거래내역 가져오기완료!:D");
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+
+  useEffect(() => {
+    getAccounts();
+  }, []);
+
   return (
     <Container>
       <HomeAppBar label="계좌 관리" />
