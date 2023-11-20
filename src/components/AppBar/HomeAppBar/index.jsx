@@ -10,7 +10,7 @@ import '../../../assets/font/font.css';
 
 const defaultTheme = createTheme({
   typography: {
-    fontFamily: 'ONESHINHANMEDIUM',
+    fontFamily: 'ONESHINHANBOLD',
   },
   palette: {
     primary: {
@@ -34,7 +34,7 @@ export default function HomeAppBar({ label }) {
           >
             <HomeIcon style={{ fontSize: 40, color: '#471AA0' }} />
           </IconButton>
-          <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1, marginLeft: '-5%' }}>
+          <Typography variant="h5" noWrap component="div" sx={{ flexGrow: 1, marginLeft: '-5%', color: '#471AA0' }}>
             {label}
           </Typography>
         </Toolbar>
