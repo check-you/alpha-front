@@ -10,7 +10,9 @@ export const Container = styled.div`
   align-items: center;
   text-align: center;
 `;
-export const Image = styled.img``;
+export const Image = styled.img`
+  width: 20vw;
+`;
 export const NumImage = styled.img``;
 export const BackImage = styled.img`
   width: 8vw;

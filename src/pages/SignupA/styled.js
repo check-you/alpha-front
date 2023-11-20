@@ -30,6 +30,29 @@ export const Wrapper2 = styled.div`
   text-align: center;
   margin-bottom: 3vh;
 `;
+export const WrapperInnerList = styled.div`
+  width: 90vw;
+  background: white;
+  border-bottom: 1px solid darkgray;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+`;
+export const WrapperUl = styled.div`
+  width: 22vw;
+  padding: 1vh 2vw;
+  background: lightgray;
+  text-align: center;
+  margin: 0;
+`;
+export const WrapperIl = styled.div`
+  width: 55vw;
+  padding: 1vh 2vw;
+
+  text-align: left;
+  margin-left: 3vw;
+`;
+
 export const NumWrapper = styled.div`
   width: 25vw;
   display: flex;
@@ -43,10 +66,18 @@ export const WrapperContent = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 90vw;
-  height: 40vh;
+  height: 73vh;
   background: white;
 `;
 export const WrapperInner = styled.div``;
+export const WrapperInnerAgree = styled.div`
+  overflow-y: scroll;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 2vh;
+`;
 export const DashBoard = styled.div`
   width: 50vh;
   background: #bb84e8;

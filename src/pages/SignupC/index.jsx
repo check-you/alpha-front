@@ -8,12 +8,12 @@ import {
   WrapperContent,
   BackgroundImage,
   NumWrapper,
-  NumImage,
+  Image,
 } from "./styled";
 import design1 from "../../assets/images/design1.svg";
-import first from "../../assets/images/firstNocheck.svg";
-import second from "../../assets/images/secondNocheck.svg";
-import third from "../../assets/images/thirdCheck.svg";
+
+import face from "../../assets/images/signupComplete.svg";
+
 const SignupC = () => {
   const navigate = useNavigate();
   const handleSubmit = () => {
@@ -34,15 +34,11 @@ const SignupC = () => {
       <WrapperContent>
         <Wrapper2>
           <Text theme="signupSubTitle"> 가입 완료 </Text>
-          <NumWrapper>
-            <NumImage src={first} alt="1" />
-            <NumImage src={second} alt="2" />
-            <NumImage src={third} alt="3" />
-          </NumWrapper>
         </Wrapper2>
         <BackgroundImage src={design1} alt="디자인" />
 
         <WrapperInner>
+          <Image src={face} alt="completes"></Image>
           <Text theme="signupContents1">조현진 고객님</Text>
           <Text theme="signupContents2">가입이 완료되었습니다!</Text>
         </WrapperInner>
