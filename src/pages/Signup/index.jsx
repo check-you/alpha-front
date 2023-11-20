@@ -28,6 +28,7 @@ const Signup = () => {
   const [userNickname, setUserNickname] = useState("");
   const [userPhone, SetUserPhone] = useState("");
   const [emailError, setEmailError] = useState("");
+  const [phoneError, setPhoneError] = useState("");
 
   const navigate = useNavigate();
 
@@ -51,7 +52,14 @@ const Signup = () => {
   };
 
   const onPhoneChange = (e) => {
-    SetUserPhone(e.target.value);
+    const input = e.target.value;
+    const onlyNums = input.replace(/[^0-9]/g, "");
+    if (input !== onlyNums) {
+      setPhoneError("숫자만 입력해주세요"); // 숫자 이외의 문자 입력 시 에러 메시지 설정
+    } else {
+      setPhoneError(""); // 숫자만 입력한 경우 에러 메시지 초기화
+    }
+    SetUserPhone(onlyNums);
   };
 
   const emailCheck = (username) => {
@@ -132,6 +140,7 @@ const Signup = () => {
               value={userPhone}
             />
           </SignupWrapper>
+          {phoneError && <Text theme="emailerror">{phoneError}</Text>}
           <SignupWrapper>
             <Image src={signupEmail} alt="이메일이미지" />
             <SignUpInput
