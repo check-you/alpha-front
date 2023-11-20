@@ -9,6 +9,7 @@ import {
   BackgroundImage,
   NumWrapper,
   NumImage,
+  Error,
   SignupWrapper,
   NoticeWrapper2,
   SignUpInput,
@@ -23,13 +24,18 @@ import third from "../../assets/images/thirdNocheck.svg";
 import design1 from "../../assets/images/design1.svg";
 import AccountNum from "../../assets/images/account.svg";
 
-function AddAccount2({ customerName = "조현진", bank = "국민은행", accountNumber = "93931967948" }) {
+function AddAccount2({ customerName = "조현진", bank = "KB증권", accountNumber = "93931967948" }) {
   const [authNum, setAuthNum] = useState("");
-  const navigate = useNavigate();
-
+  const [isAuthValid, setIsAuthValid] = useState(true); // Track the validity of the authentication number
+  const navigate = useNavigate(); 
+  
   const handleNextClick = () => {
-    // Do any necessary validation or processing here before navigating
-    navigate('/addaccount3')
+    if (authNum === "000") {
+        setIsAuthValid(true); // Reset error state if the authentication number is correct
+        navigate('/addaccount3');
+      } else {
+        setIsAuthValid(false); // Set error state if the authentication number is incorrect
+      }
   };
   return (
     <Container>
@@ -67,6 +73,11 @@ function AddAccount2({ customerName = "조현진", bank = "국민은행", accoun
           onChange={(e) => setAuthNum(e.target.value)}
         />
       </SignupWrapper>
+      {!isAuthValid && (
+          <Error>
+            올바른 인증번호가 아닙니다. 다시 확인해주세요.
+          </Error>
+        )}
       <Button onClick={handleNextClick}>다음</Button>
       <ForLayout></ForLayout>
     </Container>
