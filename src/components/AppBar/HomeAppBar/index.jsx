@@ -22,20 +22,19 @@ const defaultTheme = createTheme({
 export default function HomeAppBar({ label }) {
   return (
     <ThemeProvider theme={defaultTheme}>
-      <AppBar position="static" elevation={0}>
-        <Toolbar>
+      <AppBar position="fixed" sx={{ top: '10vh', width: '100vw', backgroundColor: 'transparent' }} elevation={0}>
+        <Toolbar sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
           <IconButton
             size="large"
             edge="start"
             color="inherit"
             aria-label="menu"
-            sx={{ mr: 2 }}
             component={Link}
             to="/"
           >
             <HomeIcon style={{ fontSize: 40, color: '#471AA0' }} />
           </IconButton>
-          <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
+          <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1, marginLeft: '-5%' }}>
             {label}
           </Typography>
         </Toolbar>
