@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Text, InputBox,BackAppBar } from "../../components";
+import { Text, InputBox, BackAppBar } from "../../components";
 import {
   Container,
   Image,
@@ -23,7 +23,6 @@ import second from "../../assets/images/secondCheck.svg";
 import third from "../../assets/images/thirdNocheck.svg";
 import design1 from "../../assets/images/design1.svg";
 import AccountNum from "../../assets/images/account.svg";
-
 function AddAccount2({ customerName = "조현진", bank = "KB증권", accountNumber = "93931967948" }) {
   const [authNum, setAuthNum] = useState("");
   const [isAuthValid, setIsAuthValid] = useState(true); // Track the validity of the authentication number
