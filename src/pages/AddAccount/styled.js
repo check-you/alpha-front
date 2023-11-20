@@ -90,6 +90,11 @@ export const Button = styled.button`
   font-size: 1rem;
   cursor: pointer;
 `;
+export const Error = styled.div`
+  color: #fc1919;
+  text-align: left;
+  height: 1vh;
+`;
 
 export const NoticeWrapper = styled.div`
   text-align: left;
@@ -105,10 +110,32 @@ export const NoticeWrapper = styled.div`
 `;
 
 export const NoticeWrapper2 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
   text-align: center;
   font-size: 1rem;
   width: 80vw;
-  height: 20vh;
+  height: 10vh;
+  font-weight: light;
+  color: #471aa0;
+  & > :first-child {
+    font-weight: bold;
+    color: #471aa0;
+    margin: 10px 0px;
+  }
+`;
+
+export const NoticeWrapper3 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  text-align: center;
+  font-size: 1rem;
+  width: 80vw;
+  height: 10vh;
   font-weight: light;
   color: #471aa0;
   & > :first-child {
@@ -124,4 +151,32 @@ export const Pink = styled.span`
 
 export const ForLayout = styled.span`
   height: 20vh;
+`;
+
+export const AccountView = styled.div`
+  border: 3px solid #471aa0;
+  display: flex;
+  flex-direction: row;
+  width: 83vw;
+  border-radius: 15px;
+  height: 10vh;
+  margin-bottom: 5vh;
+`;
+
+export const AccountInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center vertically */
+  align-items: left; /* Center horizontally */
+  text-align: left;
+  width: 80%;
+`;
+
+export const Image2 = styled.img`
+  width: 30%;
+  padding: 20px;
+`;
+
+export const ForLayout2 = styled.img`
+  height: 35vh;
 `;
