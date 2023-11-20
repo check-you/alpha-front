@@ -23,15 +23,6 @@ export const NameWrapperbottom = styled.div`
   flex-direction: row;
   margin-bottom: 4vh;
 `;
-export const BigTitleWrapper = styled.div`
-  position: fixed;
-  top: 5vh;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 90vw;
-`;
 export const ContentWrapper = styled.div`
   position: fixed;
   top: 20vh;

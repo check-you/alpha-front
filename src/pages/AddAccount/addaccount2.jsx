@@ -4,21 +4,19 @@ import { Text, InputBox } from "../../components";
 import {
   Container,
   Image,
-  Wrapper,
   Wrapper2,
   WrapperInputOut,
   BackgroundImage,
   NumWrapper,
-  BackImage,
   NumImage,
   SignupWrapper,
   NoticeWrapper2,
   SignUpInput,
   Button,
   Pink,
+  ForLayout,
 } from "./styled";
 
-import backIcon from "../../assets/images/backIcon.svg";
 import first from "../../assets/images/firstNocheck.svg";
 import second from "../../assets/images/secondCheck.svg";
 import third from "../../assets/images/thirdNocheck.svg";
@@ -27,18 +25,15 @@ import AccountNum from "../../assets/images/account.svg";
 
 function AddAccount2({ customerName = "조현진", bank = "국민은행", accountNumber = "93931967948" }) {
   const [authNum, setAuthNum] = useState("");
-  const navigate = useNavigate(); 
-  
+  const navigate = useNavigate();
+
   const handleNextClick = () => {
     // Do any necessary validation or processing here before navigating
     navigate('/addaccount3')
   };
   return (
     <Container>
-      <Wrapper>
-        <BackImage src={backIcon} alt="돌아가기" />
-        <Text theme="signupTitle">계좌 연결 추가</Text>
-      </Wrapper>
+      <BackAppBar label="계좌 연결 추가" />
 
       <WrapperInputOut>
         <Wrapper2>
@@ -73,6 +68,7 @@ function AddAccount2({ customerName = "조현진", bank = "국민은행", accoun
         />
       </SignupWrapper>
       <Button onClick={handleNextClick}>다음</Button>
+      <ForLayout></ForLayout>
     </Container>
   );
 }

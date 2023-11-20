@@ -60,12 +60,12 @@ export default function SignIn() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <HomeAppBar label="sign in" />
+      <HomeAppBar />
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 8,
+            marginTop: 20,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',

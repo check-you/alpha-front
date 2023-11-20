@@ -22,15 +22,6 @@ export const BackgroundImage = styled.img`
   top: 0;
   z-index: 2;
 `;
-export const Wrapper = styled.div`
-  width: 100vw;
-  height: 10vh;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  text-align: center;
-`;
 export const Wrapper2 = styled.div`
   display: flex;
   flex-direction: row;
@@ -53,6 +44,7 @@ export const WrapperInputOut = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 90vw;
+  height: 10vh;
 `;
 export const WrapperInput = styled.div`
   height: 50vh;
@@ -89,7 +81,8 @@ export const SignupWrapper = styled.div`
 export const Button = styled.button`
   background-color: #9747ff;
   color: white;
-  width: 80vw;
+  width: 88vw;
+  height: 8vh;
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
@@ -126,4 +119,8 @@ export const NoticeWrapper2 = styled.div`
 
 export const Pink = styled.span`
   color: #ff1abf;
+`;
+
+export const ForLayout = styled.span`
+  height: 20vh;
 `;
