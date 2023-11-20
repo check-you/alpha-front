@@ -139,6 +139,13 @@ const textStyles = {
     fontSize: "2vw",
     color: "black",
   },
+  emailerror: {
+    fontWeight: "light",
+    fontSize: "3vw",
+    color: "black",
+    marginTop: "-1vh",
+    marginBottom: "2vh",
+  },
   signupSubTitle: {
     fontWeight: "bold",
     fontSize: "4.5vw",
