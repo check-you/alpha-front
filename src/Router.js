@@ -12,7 +12,6 @@ import AddAccount from "./pages/AddAccount/addaccount.jsx";
 import AddAccount2 from "./pages/AddAccount/addaccount2.jsx";
 import AddAccount3 from "./pages/AddAccount/addaccount3.jsx";
 import Transaction from "./pages/Transaction";
-import Result from "./pages/Result/Result";
 const Router = () => {
   return (
     <BrowserRouter>
@@ -28,7 +27,6 @@ const Router = () => {
         <Route path="/addaccount2" element={<AddAccount2 />} />
         <Route path="/addaccount3" element={<AddAccount3 />} />
         <Route path="/transaction" element={<Transaction />} />
-        <Route path="/result" element={<Result />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
