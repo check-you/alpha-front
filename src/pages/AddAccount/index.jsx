@@ -1,14 +1,12 @@
 import React, { useState } from "react";
-import { Text, InputBox } from "../../components";
+import { Text, InputBox, BackAppBar } from "../../components";
 import {
   Container,
   Image,
-  Wrapper,
   Wrapper2,
   WrapperInputOut,
   BackgroundImage,
   NumWrapper,
-  BackImage,
   NumImage,
   SignupWrapper,
   NoticeWrapper,
@@ -16,7 +14,6 @@ import {
   Button,
 } from "./styled";
 import BackList from "../../assets/images/banklist.svg";
-import backIcon from "../../assets/images/backIcon.svg";  
 import first from "../../assets/images/firstChecked.svg";
 import second from "../../assets/images/secondNocheck.svg";
 import third from "../../assets/images/thirdNocheck.svg";
@@ -34,10 +31,7 @@ const AddAccount = () => {
 
   return (
     <Container>
-      <Wrapper>
-        <BackImage src={backIcon} alt="돌아가기" />
-        <Text theme="signupTitle">계좌 연결 추가</Text>
-      </Wrapper>
+      <BackAppBar label="계좌 연결 추가" />
       <WrapperInputOut>
         <Wrapper2>
           <Text> 개좌 정보 입력 </Text>
@@ -68,7 +62,7 @@ const AddAccount = () => {
           onChange={(e) => setTransactionNumber(e.target.value)}
         />
       </SignupWrapper>
-      
+
       <NoticeWrapper>
         <Text>계좌 인증 유의사항</Text>
         <Text>

@@ -22,15 +22,6 @@ export const BackgroundImage = styled.img`
   top: 0;
   z-index: 2;
 `;
-export const Wrapper = styled.div`
-  width: 100vw;
-  height: 10vh;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  text-align: center;
-`;
 export const Wrapper2 = styled.div`
   display: flex;
   flex-direction: row;
