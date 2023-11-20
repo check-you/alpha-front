@@ -61,6 +61,14 @@ export const SignUpInput = styled.input`
     padding-left: 1vw;
   }
 `;
+export const SignUpSelectBox = styled.select`
+  border: 1px solid rgba(0, 0, 0, 0);
+  width: 79vw;
+  border-radius: 2px;
+  height: 7vh;
+  font-size: 0.8rem;
+  padding-left: 1vw;
+`;
 export const SignupWrapper = styled.div`
   display: flex;
   justify-content: space-between;
