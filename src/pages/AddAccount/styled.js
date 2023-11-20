@@ -40,6 +40,7 @@ export const NumWrapper = styled.div`
   justify-content: space-between;
 `;
 export const WrapperInputOut = styled.div`
+  margin-top: 20vh;
   top: 30vh;
   flex-direction: column;
   justify-content: space-between;
