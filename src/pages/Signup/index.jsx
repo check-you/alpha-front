@@ -169,7 +169,6 @@ const Signup = () => {
               value={pwConfirm}
             />
           </SignupWrapper>
-
           <Button theme="submitBtn" onClick={handleSubmit}>
             Sign up
           </Button>
