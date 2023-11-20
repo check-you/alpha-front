@@ -9,6 +9,7 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { purple } from '@mui/material/colors';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Logo from "../../assets/images/logo.svg";
@@ -18,7 +19,7 @@ import { HomeAppBar } from '../../components';
 const defaultTheme = createTheme({
   palette: {
     primary: {
-      main: '#bb84e8',
+      main: purple[500],
     },
     secondary: {
       main: '#f44336',
