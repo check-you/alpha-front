@@ -23,11 +23,13 @@ const LinkedAccounts = () => {
       .then((response) => {
         console.log(response.data);
         alert("연결된 계좌 리스트!:D");
+
       })
       .catch((e) => {
         console.log(e);
       });
   };
+
   ////////////////////////////////////
   // const fetchData = async () => {
   //   const accessToken = getAccessToken();
@@ -59,6 +61,7 @@ const LinkedAccounts = () => {
   useEffect(() => {
     getTrnasactions();
   }, []);
+
   return (
     <Container>
       <HomeAppBar label="계좌 관리" />
