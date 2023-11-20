@@ -16,6 +16,7 @@ import {
   SignUpInput,
   Button,
   Pink,
+  ForLayout,
 } from "./styled";
 
 import backIcon from "../../assets/images/backIcon.svg";
@@ -73,6 +74,7 @@ function AddAccount2({ customerName = "조현진", bank = "국민은행", accoun
         />
       </SignupWrapper>
       <Button onClick={handleNextClick}>다음</Button>
+      <ForLayout></ForLayout>
     </Container>
   );
 }
