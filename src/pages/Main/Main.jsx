@@ -58,7 +58,7 @@ const Main = () => {
       console.log("조회 버튼이 클릭되었습니다.");
       // 여기에 조회 로직 추가
       navigate(
-        `/result?name=${name}&financialInstitution=${financialInstitution}&transactionNumber=${transactionNumber}`
+        `/Transaction?name=${name}&financialInstitution=${financialInstitution}&transactionNumber=${transactionNumber}`
       );
     }
   };
