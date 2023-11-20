@@ -1,19 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Text, Button } from "../../components";
+import { Text, Button, BackAppBar } from "../../components";
 import {
   Container,
-  Image,
-  Wrapper,
   Wrapper2,
   WrapperInner,
   WrapperContent,
   BackgroundImage,
   NumWrapper,
-  BackImage,
   NumImage,
 } from "./styled";
-import backIcon from "../../assets/images/backIcon.svg";
 import design1 from "../../assets/images/design1.svg";
 import first from "../../assets/images/firstNocheck.svg";
 import second from "../../assets/images/secondNocheck.svg";
@@ -34,10 +30,7 @@ const SignupC = () => {
   };
   return (
     <Container>
-      <Wrapper>
-        <BackImage src={backIcon} alt="돌아가기" />
-        <Text theme="signupTitle">Sign Up</Text>
-      </Wrapper>
+      <BackAppBar label="회원가입" />
       <WrapperContent>
         <Wrapper2>
           <Text theme="signupSubTitle"> 가입 완료 </Text>

@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Text, Button, TextList, TransactionItems } from "../../components";
+import { Text, Button, TextList, TransactionItems, BackAppBar } from "../../components";
 import {
   Container,
-  Wrapper,
   Wrapper2,
   BackgroundImage,
-  BackImage,
   WrapperOut,
   CheckPerson,
   TransactionLists,
@@ -14,16 +12,12 @@ import {
   DateWrapperTitle,
   Wrapper3,
 } from "./styled";
-import backIcon from "../../assets/images/backIcon.svg";
 import design1 from "../../assets/images/design1.svg";
 
 const Transaction = () => {
   return (
     <Container>
-      <Wrapper>
-        <BackImage src={backIcon} alt="돌아가기" />
-        <Text theme="signupTitle">조회 결과</Text>
-      </Wrapper>
+      <BackAppBar label="조회 결과" />
       <WrapperOut>
         <Wrapper2>
           <Text theme="subTitle"> 신원 조회 </Text>

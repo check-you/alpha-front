@@ -1,26 +1,19 @@
 import React from "react";
-import { Text, Button, LinkedAccount, AddAccountBtn } from "../../components";
+import { Text, Button, LinkedAccount, AddAccountBtn, HomeAppBar } from "../../components";
 import {
   Container,
   TitleWrapper,
   NameWrapper,
-  BigTitleWrapper,
   Image,
   ContentWrapper,
   NameWrapperbottom,
   AccountWrapper,
   AddBtnWrapper,
 } from "./styled";
-import homeIcon from "../../assets/images/homeIcon.svg";
 const LinkedAccounts = () => {
   return (
     <Container>
-      <BigTitleWrapper>
-        <Image src={homeIcon} alt="homeIcon" />
-        <Text theme="title"> 계좌 관리 </Text>
-        <Image src={homeIcon} alt="homeIcon" style={{ opacity: 0 }} />
-      </BigTitleWrapper>
-
+      <HomeAppBar label="계좌 관리" />
       <ContentWrapper>
         <TitleWrapper>
           <NameWrapper>
