@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Text, InputBox, BackAppBar } from "../../components";
+import { useNavigate } from 'react-router-dom';
 import {
   Container,
   Image,
@@ -23,12 +24,16 @@ import AccountNum from "../../assets/images/account.svg";
 const AddAccount = () => {
   const [financialInstitution, setFinancialInstitution] = useState("");
   const [transactionNumber, setTransactionNumber] = useState("");
-
+  const navigate = useNavigate();
   const [temp, setTemp] = useState("");
+
   const ontempChange = (e) => {
     setTemp(e.target.value);
   };
-
+  const handleNextClick = () => {
+    // Do any necessary validation or processing here before navigating
+    navigate('/addaccount2')
+  };
   return (
     <Container>
       <BackAppBar label="계좌 연결 추가" />
@@ -76,7 +81,7 @@ const AddAccount = () => {
         </Text>
       </NoticeWrapper>
 
-      <Button>다음</Button>
+      <Button onClick={handleNextClick}>다음</Button>
     </Container>
   );
 };
