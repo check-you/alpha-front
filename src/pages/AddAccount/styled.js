@@ -22,15 +22,6 @@ export const BackgroundImage = styled.img`
   top: 0;
   z-index: 2;
 `;
-export const Wrapper = styled.div`
-  width: 100vw;
-  height: 10vh;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  text-align: center;
-`;
 export const Wrapper2 = styled.div`
   display: flex;
   flex-direction: row;
@@ -69,6 +60,14 @@ export const SignUpInput = styled.input`
     color: #d9d9d9;
     padding-left: 1vw;
   }
+`;
+export const SignUpSelectBox = styled.select`
+  border: 1px solid rgba(0, 0, 0, 0);
+  width: 79vw;
+  border-radius: 2px;
+  height: 7vh;
+  font-size: 0.8rem;
+  padding-left: 1vw;
 `;
 export const SignupWrapper = styled.div`
   display: flex;

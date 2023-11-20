@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Text, Button } from "../../components";
+import { Text, Button, BackAppBar } from "../../components";
 import {
   Container,
   Image,
-  Wrapper,
   Wrapper2,
   WrapperInput,
   SignupWrapper,
   SignUpInput,
   BackgroundImage,
   NumWrapper,
-  BackImage,
   WrapperInputOut,
   NumImage,
 } from "./styled";
@@ -19,7 +17,6 @@ import signupEmail from "../../assets/images/SignupEmail.svg";
 import signupUser from "../../assets/images/signupUser.svg";
 import signupPhone from "../../assets/images/signupPhone.svg";
 import signupPwd from "../../assets/images/signupPwd.svg";
-import backIcon from "../../assets/images/backIcon.svg";
 import design1 from "../../assets/images/design1.svg";
 import first from "../../assets/images/firstChecked.svg";
 import second from "../../assets/images/secondNocheck.svg";
@@ -105,10 +102,7 @@ const Signup = () => {
   };
   return (
     <Container>
-      <Wrapper>
-        <BackImage src={backIcon} alt="돌아가기" />
-        <Text theme="signupTitle">Sign Up</Text>
-      </Wrapper>
+      <BackAppBar label="회원가입" />
       <WrapperInputOut>
         <Wrapper2>
           <Text theme="signupSubTitle"> 개인정보 입력 </Text>

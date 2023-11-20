@@ -1,6 +1,20 @@
 @font-face {
+    font-family: 'ONESHINHANLIGHT';
+    src: local('ONESHINHANLIGHT'), url('./ONESHINHANLIGHT.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
     font-family: 'ONESHINHANMEDIUM';
     src: local('ONESHINHANMEDIUM'), url('./ONESHINHANMEDIUM.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ONESHINHANBOLD';
+    src: local('ONESHINHANBOLD'), url('./ONESHINHANBOLD.woff2') format('woff2');
     font-weight: 300;
     font-style: normal;
 }

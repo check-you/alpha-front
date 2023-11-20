@@ -10,7 +10,7 @@ import '../../../assets/font/font.css';
 
 const defaultTheme = createTheme({
   typography: {
-    fontFamily: 'ONESHINHANMEDIUM',
+    fontFamily: 'ONESHINHANBOLD',
   },
   palette: {
     primary: {
@@ -28,19 +28,19 @@ export default function BackAppBar({ label }) {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <AppBar position="static" elevation={0}>
-        <Toolbar>
+      <AppBar position="fixed" sx={{ top: '10vh', width: '100vw', backgroundColor: 'transparent' }} elevation={0}>
+        <Toolbar sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', textAlign: 'left' }}>
+
           <IconButton
             size="large"
             edge="start"
             color="inherit"
             aria-label="menu"
-            sx={{ mr: 2 }}
             onClick={handleBack}
           >
             <ArrowBackIosNewIcon style={{ fontSize: 30, color: '#471AA0' }} />
           </IconButton>
-          <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
+          <Typography variant="h5" noWrap component="div" color="#471AA0">
             {label}
           </Typography>
         </Toolbar>

@@ -4,12 +4,10 @@ import { Text, InputBox } from "../../components";
 import {
   Container,
   Image,
-  Wrapper,
   Wrapper2,
   WrapperInputOut,
   BackgroundImage,
   NumWrapper,
-  BackImage,
   NumImage,
   Error,
   SignupWrapper,
@@ -20,7 +18,6 @@ import {
   ForLayout,
 } from "./styled";
 
-import backIcon from "../../assets/images/backIcon.svg";
 import first from "../../assets/images/firstNocheck.svg";
 import second from "../../assets/images/secondCheck.svg";
 import third from "../../assets/images/thirdNocheck.svg";
@@ -42,10 +39,7 @@ function AddAccount2({ customerName = "조현진", bank = "KB증권", accountNum
   };
   return (
     <Container>
-      <Wrapper>
-        <BackImage src={backIcon} alt="돌아가기" />
-        <Text theme="signupTitle">계좌 연결 추가</Text>
-      </Wrapper>
+      <BackAppBar label="계좌 연결 추가" />
 
       <WrapperInputOut>
         <Wrapper2>

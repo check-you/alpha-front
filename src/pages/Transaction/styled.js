@@ -23,16 +23,6 @@ export const BackgroundImage = styled.img`
   z-index: 2;
 `;
 export const SubTitleWraper = styled.div``;
-export const Wrapper = styled.div`
-  position: fixed;
-  top: 10vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  text-align: center;
-`;
 export const Wrapper2 = styled.div`
   display: flex;
   flex-direction: row;
