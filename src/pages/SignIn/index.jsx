@@ -15,8 +15,8 @@ import { purple } from "@mui/material/colors";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Logo from "../../assets/images/DoubleCheck.svg";
-import { Image, Text } from "./styled";
-import { HomeAppBar } from "../../components";
+import { Image } from "./styled";
+import { HomeAppBar, Text } from "../../components";
 import { useNavigate } from "react-router-dom";
 import { axiosInstance } from "../../apis";
 
