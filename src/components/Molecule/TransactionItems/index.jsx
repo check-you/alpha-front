@@ -10,12 +10,12 @@ import {
 const TextList = ({
   updown,
   theme,
-  content1,
-  content2,
-  content3,
-  content4,
-  content5,
-  content6,
+  itemName,
+  transactionTime,
+  // content3,
+  profitRate,
+  price,
+  category,
   backgroundColor,
 }) => {
   const defaultBackgroundColor = "white"; // 기본 배경색 설정
@@ -27,22 +27,20 @@ const TextList = ({
   return (
     <Container style={containerStyle}>
       <InsideContianer style={containerStyle}>
-        <Text theme={theme}>{content1} </Text>
+        <Text theme={theme}>{category} </Text>
       </InsideContianer>
       <InsideContianer style={containerStyle}>
-        <Text theme={theme}>{content2}</Text>
+        <Text theme={theme}>{itemName}</Text>
+      </InsideContianer>
+
+      <InsideContianer style={containerStyle}>
+        <Text theme={theme}>{price}</Text>
       </InsideContianer>
       <InsideContianer style={containerStyle}>
-        <Text theme={theme}>{content3}</Text>
+        <Text theme={updown}>{profitRate}</Text>
       </InsideContianer>
       <InsideContianer style={containerStyle}>
-        <Text theme={updown}>{content4}</Text>
-      </InsideContianer>
-      <InsideContianer style={containerStyle}>
-        <Text theme={theme}>{content5}</Text>
-      </InsideContianer>
-      <InsideContianer style={containerStyle}>
-        <Text theme={theme}>{content6}</Text>
+        <Text theme={theme}>{transactionTime}</Text>
       </InsideContianer>
     </Container>
   );
