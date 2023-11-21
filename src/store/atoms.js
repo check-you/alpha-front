@@ -43,3 +43,13 @@ export const loginState = atom({
   },
   // effects_UNSTABLE: [persistAtom],
 });
+
+export const financialInstitutionState = atom({
+  key: "financialInstitutionState",
+  default: "",
+});
+
+export const transactionNumberState = atom({
+  key: "transactionNumberState",
+  default: "",
+});
