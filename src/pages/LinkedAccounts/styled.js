@@ -42,6 +42,17 @@ export const Image = styled.img`
   width: 10vw;
 `;
 
+export const Logout = styled.div`
+  color: silver;
+  text-align: start;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+`;
+
+export const Link = styled.div`
+  color: silver;
+`;
+
 export const DashBoard = styled.div`
   width: 50vw;
   background: #bb84e8;
