@@ -37,7 +37,14 @@ const Main = () => {
   const [userNumber, setUserNumber] = useState("");
   const [showError, setShowError] = useState(false);
   const [isModalOpen, setModalOpen] = useState(false);
+  const [isModalOpenName, setIsModalOpenName] = useState(false);
   const navigate = useNavigate();
+  const modalOpenName = () => {
+    setIsModalOpenName(true);
+  };
+  const modalCloseName = () => {
+    setIsModalOpenName(false);
+  };
   const modalOpen = () => {
     setModalOpen(true);
   };
@@ -74,10 +81,15 @@ const Main = () => {
       .then((response) => {
         setTransactionDatas(response.data.data.data);
         console.log("메인에서:", response.data.data.data);
+
         if (response.data.success) {
-          navigate(
-            `/Transaction?userName=${userName}&financialInstitution=${financialInstitution}&transactionNumber=${transactionNumber}`
-          );
+          if (response.data.data.data.name == userName) {
+            navigate(
+              `/Transaction?userName=${userName}&financialInstitution=${financialInstitution}&transactionNumber=${transactionNumber}`
+            );
+          } else {
+            modalOpenName();
+          }
         }
       })
       .catch((e) => {
@@ -115,6 +127,11 @@ const Main = () => {
         </AlertModal>
       )}
 
+      {isModalOpenName && (
+        <AlertOneBtnModal closeHandler={modalCloseName}>
+          계좌 소유주 이름과 계좌 번호가 일치하지 않습니다
+        </AlertOneBtnModal>
+      )}
       <LogoImage src={Logo} alt="로고이미지" className="logo" />
 
       <SignupWrapper>

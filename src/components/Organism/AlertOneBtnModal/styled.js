@@ -23,8 +23,8 @@ export const Container = styled.div`
 export const TextWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: left;
-  text-align: left;
+  justify-content: center;
+  text-align: center;
 `;
 export const BtnWrapper = styled.div``;
 
