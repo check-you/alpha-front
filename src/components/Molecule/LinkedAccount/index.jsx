@@ -17,9 +17,9 @@ const LinkedAccount = ({ deleteHandler, bank, account, category }) => {
       <LogoImage src={shinhanLogo} alt="프로필 이미지" />
       <TextWrapper>
         <Text theme="accountCorp">
-          {bank} {category}신한투자금융 입출금통장 [입출금]
+          {bank} {category}
         </Text>
-        <Text theme="accountNum"> 1234-567-78944{account} </Text>
+        <Text theme="accountNum"> {account} </Text>
       </TextWrapper>
       <TrashWrapper>
         <TrashImage
