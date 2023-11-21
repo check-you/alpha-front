@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useRecoilValue } from "recoil";
-import { loginUserEmail } from "../../store/atoms";
+import { useRecoilValue , useSetRecoilState} from "recoil";
+import { loginUserEmail , isLoginAtom } from "../../store/atoms";
 import { axiosInstance } from "../../apis";
 import { useNavigate } from "react-router-dom";
 import {
@@ -9,6 +9,7 @@ import {
   AddAccountBtn,
   HomeAppBar,
   SelectModal,
+
 } from "../../components";
 import {
   Container,
@@ -19,8 +20,12 @@ import {
   NameWrapperbottom,
   AccountWrapper,
   AddBtnWrapper,
+  Logout,
+  Link,
 } from "./styled";
+import { async } from "q";
 const LinkedAccounts = () => {
+  const setIsLoginFalse = useSetRecoilState(isLoginAtom);
   const getUserEmail = useRecoilValue(loginUserEmail);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [accountToDelete, setAccountToDelete] = useState(0);
@@ -95,6 +100,14 @@ const LinkedAccounts = () => {
       });
   };
 
+  const logoutHandler = async() => {
+    // Delete token from cookies
+    setIsLoginFalse(false);
+    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    // Redirect to the main page
+    navigate("/");
+  };
+
   useEffect(() => {
     console.log(getUserEmail, "유저이메일~~~~~~");
     const token = document.cookie // 쿠키 값 가져오기
@@ -139,6 +152,9 @@ const LinkedAccounts = () => {
             <Text theme="dashBoardName">{accountsData.name}</Text>
             <Text theme="dashBoardInfo"> 님의 계좌정보</Text>
           </NameWrapper>
+          <Link to="/" onClick={logoutHandler}>
+            <Logout >로그아웃</Logout>
+          </Link>
           <NameWrapperbottom>
             <Text theme="dashBoard">
               총 연결 계좌 {accountsData.listCnt} 개

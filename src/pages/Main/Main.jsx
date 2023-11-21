@@ -27,6 +27,7 @@ const Main = () => {
   const setTransactionDatas = useSetRecoilState(transactionFromApi);
   const getTransactionDatas = useRecoilValue(transactionFromApi);
   const getIsLoginAtom = useSetRecoilState(isLoginAtom);
+  const islogincheck = useRecoilValue(isLoginAtom);
   const [userName, setUserName] = useState("");
   const [isThereModal, SetIsThereModal] = useState(false);
   const [financialInstitution, setFinancialInstitution] = useState("");
@@ -55,7 +56,8 @@ const Main = () => {
     navigate("/signin");
   };
   const handleIsLogin = () => {
-    if (getIsLoginAtom) {
+    console.log('넘어가기전',islogincheck);
+    if (islogincheck) {
       navigate("/linkedaccounts");
     } else {
       modalOpen();
@@ -97,6 +99,7 @@ const Main = () => {
     }
   };
 
+  console.log(islogincheck , "로그인 여부확인");
   return (
     <Container>
       {isThereModal && (
