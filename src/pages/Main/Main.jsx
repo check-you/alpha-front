@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { useSetRecoilState } from "recoil";
+import { useSetRecoilState, useRecoilValue } from "recoil";
 import { axiosInstance } from "../../apis";
-import { transactionFromApi } from "../../store/atoms";
+import { transactionFromApi, isLoginAtom } from "../../store/atoms";
 import { useNavigate } from "react-router-dom";
 import Logo from "../../assets/images/DoubleCheck.svg";
 import {
@@ -25,6 +25,7 @@ import ID from "../../assets/images/saupja.svg";
 
 const Main = () => {
   const setTransactionDatas = useSetRecoilState(transactionFromApi);
+  const getIsLoginAtom = useSetRecoilState(isLoginAtom);
   const [userName, setUserName] = useState("");
   const [isThereModal, SetIsThereModal] = useState(false);
   const [financialInstitution, setFinancialInstitution] = useState("");
@@ -53,10 +54,8 @@ const Main = () => {
     navigate("/signin");
   };
   const handleIsLogin = () => {
-    if (true) {
-      modalOpen();
-      // 로그인 여부 확인해서 들어오기!!!!
-      // navigate("/linkedaccounts");
+    if (getIsLoginAtom) {
+      navigate("/linkedaccounts");
     } else {
       modalOpen();
     }

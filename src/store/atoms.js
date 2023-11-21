@@ -5,6 +5,14 @@ export const testAtom = atom({
   key: "test",
   default: 1,
 });
+export const loginUserEmail = atom({
+  key: "loginUserEmail",
+  default: "",
+});
+export const isLoginAtom = atom({
+  key: "isLoginAtom",
+  default: false,
+});
 export const signUpDataAtom = atom({
   key: "signUpData",
   default: {
