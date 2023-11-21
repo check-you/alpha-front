@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useRecoilValue } from "recoil";
-import {
-  Text,
-  Button,
-  TextList,
-  TransactionItems,
-  BackAppBar,
-} from "../../components";
+import { Text, TextList, TransactionItems, BackAppBar } from "../../components";
 import {
   Container,
   Wrapper2,
@@ -108,7 +102,7 @@ const Transaction = () => {
                 />
               );
             })}
-          <TransactionItems
+          {/* <TransactionItems
             theme="transactionTableContent"
             updown="transactionUp"
             itemName="신한투자증권"
@@ -143,7 +137,7 @@ const Transaction = () => {
             price="255874"
             profitRate="34%"
             category="국내주식매도"
-          />
+          /> */}
         </TransactionLists>
       </WrapperOut>
     </Container>

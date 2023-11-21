@@ -4,7 +4,7 @@ import { useSetRecoilState, useRecoilValue } from "recoil";
 import { signUpDataAtom } from "../../store/atoms";
 import { axiosInstance } from "../../apis";
 import { useNavigate } from "react-router-dom";
-import { Text, Button, BackAppBar } from "../../components";
+import { Text, Button, BackAppBar, AlertOneBtnModal } from "../../components";
 import {
   Container,
   Image,
@@ -36,14 +36,32 @@ const Signup = () => {
   const [userPhone, SetUserPhone] = useState("");
   const [emailError, setEmailError] = useState("");
   const [phoneError, setPhoneError] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpenPw, setIsModalOpenPw] = useState(false);
+  const [isModalOpenAll, setIsModalOpenAll] = useState(false);
   const navigate = useNavigate();
 
+  const openModal = async () => {
+    setIsModalOpen(true);
+  };
+  const closeModal = async () => {
+    setIsModalOpen(false);
+  };
+
+  const openModalPw = async () => {
+    setIsModalOpenPw(true);
+  };
+  const closeModalPw = async () => {
+    setIsModalOpenPw(false);
+  };
+  const openModalAll = async () => {
+    setIsModalOpenAll(true);
+  };
+  const closeModalAll = async () => {
+    setIsModalOpenAll(false);
+  };
   const isButtonDisabled =
-    pw !== pwConfirm ||
-    pw === "" ||
-    userEmail === "" ||
-    userName === "" ||
-    userPhone === "";
+    pw === "" || userEmail === "" || userName === "" || userPhone === "";
   const onPwConfirmChange = (e) => {
     // 추가: 비밀번호 확인용 입력값 변경 시
     setPwConfirm(e.target.value);
@@ -91,19 +109,20 @@ const Signup = () => {
       email: userEmail,
       password: pw,
     });
-    // console.log(settingComSignupData);
   };
 
   const emailDuplicate = async () => {
     axiosInstance
       .get(`/api/user/duplicate/${userEmail}`)
       .then((response) => {
-        if (response.data) {
+        if (response.data.data == false) {
           setSignupData();
           navigate("/signupa");
+          console.log(response.data, "회원가입 요청 성공");
           console.log(settingComSignupData);
         } else {
-          alert("중복된 이메일임");
+          console.log(response.data, "중복된 이메일 ");
+          openModal();
         }
       })
       .catch((e) => {
@@ -111,14 +130,40 @@ const Signup = () => {
       });
   };
   const handleSubmit = async () => {
-    if (pw === pwConfirm) {
-      emailDuplicate();
+    if (
+      userEmail !== "" &&
+      userName !== "" &&
+      userPhone !== "" &&
+      pw !== "" &&
+      pwConfirm !== ""
+    ) {
+      if (pw === pwConfirm) {
+        emailDuplicate();
+      } else {
+        openModalPw();
+      }
     } else {
-      alert("비밀번호가 일치하지 않습니다.");
+      openModalAll();
     }
   };
   return (
     <Container>
+      {isModalOpen && (
+        <AlertOneBtnModal closeHandler={closeModal}>
+          중복된 이메일입니다
+        </AlertOneBtnModal>
+      )}
+      {isModalOpenPw && (
+        <AlertOneBtnModal closeHandler={closeModalPw}>
+          비밀번호가 일치하지 않습니다
+        </AlertOneBtnModal>
+      )}
+      {isModalOpenAll && (
+        <AlertOneBtnModal closeHandler={closeModalAll}>
+          모든 값을 입력해주세요
+        </AlertOneBtnModal>
+      )}
+
       <BackAppBar label="회원가입" />
       <WrapperInputOut>
         <Wrapper2>

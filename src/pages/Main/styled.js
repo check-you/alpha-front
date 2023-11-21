@@ -60,7 +60,14 @@ export const BoldLink = styled(LinkButton)`
 export const ThinLink = styled(LinkButton)`
   font-weight: normal; /* 얇은 글자 굵기 */
 `;
-
+export const SignUpSelectBox = styled.select`
+  border: 1px solid rgba(0, 0, 0, 0);
+  width: 79vw;
+  border-radius: 2px;
+  height: 7vh;
+  font-size: 0.8rem;
+  padding-left: 1vw;
+`;
 export const SignupWrapper = styled.div`
   width: 80vw;
   height: 7vh;

@@ -32,7 +32,10 @@ export const ContentWrapper = styled.div`
   justify-content: center;
   align-items: center;
 `;
-export const AccountWrapper = styled.div``;
+export const AccountWrapper = styled.div`
+  height: 50vh;
+  overflow-y: auto;
+`;
 export const AddBtnWrapper = styled.div`
   position: fixed;
   bottom: 3vh;

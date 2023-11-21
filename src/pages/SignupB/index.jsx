@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { signUpDataAtom } from "../../store/atoms";
 import { axiosInstance } from "../../apis";
-import { Text, Button, BackAppBar } from "../../components";
+import { Text, Button, BackAppBar, AlertOneBtnModal } from "../../components";
 import {
   Container,
   Wrapper2,
@@ -21,30 +21,16 @@ const SignupB = () => {
   const navigate = useNavigate();
   const getSignupData = useRecoilValue(signUpDataAtom);
   const [isEmailSubmit, setIsEmailSubmit] = useState(false);
-  const [isAuthComplete, setIsAuthComplete] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   useEffect(() => {
     console.log(getSignupData.name);
   }, []);
-  // const getIsEmailOk = async () => {
-  //   axiosInstance
-  //     .post("/api/user/confirm/auth", {
-
-  //     })
-  //     .then((response) => {
-  //       setTransactionDatas(response.data);
-  //       console.log(response.data);
-  //       alert("거래내역 가져오기완료!:D");
-  //       if (response.data.success) {
-  //         navigate(
-  //           `/Transaction?userName=${userName}&financialInstitution=${financialInstitution}&transactionNumber=${transactionNumber}`
-  //         );
-  //       }
-  //     })
-  //     .catch((e) => {
-  //       isThereModalOpen();
-  //       console.log(e);
-  //     });
-  // };
+  const openModal = async () => {
+    setIsModalOpen(true);
+  };
+  const closeModal = async () => {
+    setIsModalOpen(false);
+  };
 
   const onSignUp = async () => {
     axiosInstance
@@ -55,7 +41,7 @@ const SignupB = () => {
         password: getSignupData.password,
       })
       .then((response) => {
-        alert("로그인 요청 완");
+        console.log("로그인 요청이 완료되었습니다. ");
       })
       .catch((e) => {
         console.log(e);
@@ -63,31 +49,26 @@ const SignupB = () => {
   };
 
   const isEmailAuthCom = async () => {
+    console.log("이메일 인증 확인 요청 보냄");
     axiosInstance
       .post("/api/user/confirm/auth", {
         email: getSignupData.email,
       })
       .then((response) => {
-        if (response.success) {
-          navigate("/signuc");
+        if (response.data.data == true) {
+          console.log(response.data.data, "성공 응답");
+          console.log(response.data, "응답 데이터");
+          navigate("/signupc");
         } else {
-          alert("이메일 인증해");
+          console.log(response.data.data, "실패 응답");
+
+          openModal();
         }
       })
       .catch((e) => {
         console.log(e);
       });
   };
-  // const fetchAuthStatus = async () => {
-  //   try {
-  //     // API를 통해 isAuthComplete 값을 가져옴 (예시: fetch, axios 등을 사용)
-  //     const response = await fetch("API_URL_HERE");
-  //     const data = await response.json();
-  //     setIsAuthComplete(data.isAuthComplete); // API에서 받아온 값으로 isAuthComplete 상태 설정
-  //   } catch (error) {
-  //     console.error("Error fetching authentication status:", error);
-  //   }
-  // };
 
   const emailSubmitClick = () => {
     onSignUp();
@@ -98,6 +79,11 @@ const SignupB = () => {
   };
   return (
     <Container>
+      {isModalOpen && (
+        <AlertOneBtnModal closeHandler={closeModal}>
+          이메일 인증이 완료되지 않았습니다
+        </AlertOneBtnModal>
+      )}
       <BackAppBar label="회원가입" />
       <WrapperContent>
         <Wrapper2>
