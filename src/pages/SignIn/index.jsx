@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import IconButton from "@mui/material/IconButton";
@@ -15,6 +15,9 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Logo from "../../assets/images/logo.svg";
 import { Image } from "./styled";
 import { HomeAppBar } from "../../components";
+import axios from "../../apis/index";
+import { useNavigate } from "react-router-dom";
+import { axiosInstance } from "../../apis";
 
 const defaultTheme = createTheme({
   palette: {
@@ -33,8 +36,9 @@ export default function SignIn() {
   const [password, setPassword] = React.useState("");
   const [isEmailValid, setEmailValid] = React.useState(false);
   const [isPasswordValid, setPasswordValid] = React.useState(false);
-
   const handleClickShowPassword = () => setShowPassword((show) => !show);
+  const navigate = useNavigate();
+  const [successLogin, setSuccessLogin] = useState(true);
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
@@ -52,14 +56,42 @@ export default function SignIn() {
     setPasswordValid(event.target.value.length >= 8);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    try {
+      const response = await axiosInstance.post(
+        "/api/user/login",  // Remove baseURL from the URL
+        {
+          email: email,
+          password: password,
+        },
+        {
+          withCredentials: true,
+        }
+      );
+      console.log(response);
+      if (response) {
+        // 토큰 값을 가져옴
+        const token = response.headers.get("Accesstoken");
+        // 토큰을 쿠키에 저장
+        //localStorage.setItem("token", token);
+        document.cookie = `token=${token}; path=/`;
+        // 로그인 성공 처리
+        console.log("로그인 성공:", response.data);
+  
+        // 인트로로 이동
+        navigate("/linkedaccounts");
+      } else {
+        // response가 정의되어 있지 않거나 data 속성이 없을 때의 처리
+        console.error("서버 응답에 문제가 있습니다.");
+      }
+    } catch (error) {
+      // 로그인 실패 처리
+      setSuccessLogin(false);
+      console.error("로그인 실패:",error, error.response?.data?.reason || "알 수 없는 오류");
+    }
   };
+   
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -133,12 +165,14 @@ export default function SignIn() {
               type="submit"
               fullWidth
               variant="contained"
-              href="/"
               sx={{ mt: 3, mb: 2, py: 2 }}
               disabled={!isEmailValid || !isPasswordValid}
-            >
-              로그인
-            </Button>
+              >로그인</Button>
+              {successLogin ? null : (
+                <p>
+                  아이디와 비밀번호를 다시 확인해주세요.
+                </p>
+              )}
             <Grid container justifyContent="center" alignItems="center">
               <Link href="/signup" underline="none" variant="body2">
                 {"아직 계정이 없으신가요? 회원가입"}
