@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import { Text, InputBox, BackAppBar } from "../../components";
 import {
@@ -17,6 +17,7 @@ import {
   Pink,
   ForLayout,
 } from "./styled";
+import { useSetRecoilState } from "recoil";
 import { useRecoilState } from 'recoil';  // <-- Import useRecoilState
 import { financialInstitutionState, transactionNumberState } from '../../store/atoms';
 import first from "../../assets/images/firstNocheck.svg";
@@ -26,6 +27,8 @@ import design1 from "../../assets/images/design1.svg";
 import AccountNum from "../../assets/images/account.svg";
 import { axiosInstance } from "../../apis";
 import Cookies from 'js-cookie';
+import { useRecoilValue } from "recoil";
+import { transactionFromApi , loginUserEmail } from "../../store/atoms";
 
 function AddAccount2({ customerName = "조현진", bank = "KB증권", accountNumber = "93931967948" }) {
   const [authNum, setAuthNum] = useState("");
@@ -33,7 +36,18 @@ function AddAccount2({ customerName = "조현진", bank = "KB증권", accountNum
   const [financialInstitution, setFinancialInstitution] = useRecoilState(financialInstitutionState);
   const [transactionNumber, setTransactionNumber] = useRecoilState(transactionNumberState);
   const navigate = useNavigate();
+  const [accountsData, setAccountsData] = useState({});
+  const setUserEmail = useSetRecoilState(loginUserEmail);
+
   const last3DigitsOfAccount = transactionNumber.slice(-3); // Extract the last 3 digits of the account number
+  const dataFromApi = useRecoilValue(transactionFromApi);
+  const getEmail = useRecoilValue(loginUserEmail);
+
+
+  console.log('Email before setting:', getEmail);
+  console.log('User Email:', getEmail);
+  console.log(accountsData, "어카운츠-데이터");
+  console.log(accountsData.name, "이름");
 
   const handleNextClick = async () => {    
     if (authNum === last3DigitsOfAccount) {
@@ -46,7 +60,6 @@ function AddAccount2({ customerName = "조현진", bank = "KB증권", accountNum
         ?.split("=")[1];
         //계좌 연결 POST API 부분
         try {
-          
           console.log(accessToken);
           // Make the API call
           const response = await axiosInstance.post(
@@ -63,7 +76,7 @@ function AddAccount2({ customerName = "조현진", bank = "KB증권", accountNum
           });
   
           // Handle the response as needed
-          console.log('API Response:', response.data);
+          console.log('API Response:', getEmail);
   
           // Continue with navigation
           navigate('/addaccount3');
@@ -93,7 +106,7 @@ function AddAccount2({ customerName = "조현진", bank = "KB증권", accountNum
       </WrapperInputOut>
 
       <NoticeWrapper2>
-        <Text>{customerName} 고객님,</Text>
+        <Text>{dataFromApi.name} 고객님,</Text>
         <Text>
           {financialInstitution}({transactionNumber})로 
           <br/>1원을 보냈습니다.

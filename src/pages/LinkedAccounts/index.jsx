@@ -131,6 +131,7 @@ const LinkedAccounts = () => {
       console.log(accountsData.accountList, "계좌리스트");
     }
   }, [accountsData]);
+  
   return (
     <Container>
       {isDeleteModalOpen && (

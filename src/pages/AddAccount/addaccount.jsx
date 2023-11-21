@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useRecoilState } from "recoil"; // 추가import { Text, InputBox, BackAppBar } from "../../components";
+import { useRecoilState } from 'recoil'; // 추가import { Text, InputBox, BackAppBar } from "../../components";
 import {
   Container,
   Image,
@@ -15,79 +15,37 @@ import {
   Button,
   SignUpSelectBox,
 } from "./styled";
-import { axiosInstance } from "../../apis";
+import { loginUserEmail, isLoginAtom } from "../../store/atoms";
 import BackList from "../../assets/images/banklist.svg";
 import first from "../../assets/images/firstChecked.svg";
 import second from "../../assets/images/secondNocheck.svg";
 import third from "../../assets/images/thirdNocheck.svg";
 import design1 from "../../assets/images/design1.svg";
 import AccountNum from "../../assets/images/account.svg";
-import { financialInstitutionState } from "../../store/atoms";
-import { transactionNumberState } from "../../store/atoms";
-import { Text, BackAppBar, AlertOneBtnModal } from "../../components";
+import { financialInstitutionState } from '../../store/atoms';
+import { transactionNumberState } from '../../store/atoms';
+import { Text, InputBox, BackAppBar } from "../../components";
+import { useRecoilValue } from "recoil";
 
 const AddAccount = () => {
-  const [isModalOpen, setModalOpen] = useState(false);
-  const modalOpen = () => {
-    setModalOpen(true);
-  };
-  const modalClose = () => {
-    setModalOpen(false);
-  };
-  const [financialInstitution, setFinancialInstitution] = useRecoilState(
-    financialInstitutionState
-  ); // 수정
-  const [transactionNumber, setTransactionNumber] = useRecoilState(
-    transactionNumberState
-  ); // 수정
+  const [email, setEmail] = React.useState("");
+  const [financialInstitution, setFinancialInstitution] = useRecoilState(financialInstitutionState); // 수정
+  const [transactionNumber, setTransactionNumber] = useRecoilState(transactionNumberState); // 수정
   const navigate = useNavigate();
   const [temp, setTemp] = useState("");
+  const getEmail = useRecoilValue(loginUserEmail);
 
-  ///// 계좌 번호 중복 체크 //////
-  const checkAccountDuplicate = async () => {
-    // 여기서 토큰 값을 가져오거나, 토큰이 있다고 가정합니다.
-    const token = document.cookie // 쿠키 값 가져오기
-      .split("; ")
-      .find((row) => row.startsWith("token="))
-      ?.split("=")[1];
-
-    if (token) {
-      axiosInstance.defaults.headers.common[
-        "Authorization"
-      ] = `Bearer ${token}`;
-      try {
-        const response = await axiosInstance.get(
-          `/api/accounts/duplicate/${transactionNumber}`
-        );
-        if (response.data.data === true) {
-          modalOpen(); // 이미 존재하는 계좌번호일 경우 모달 열기
-        } else {
-          navigate("/addaccount2"); // 중복되지 않는 경우 다음 페이지로 이동
-        }
-      } catch (error) {
-        console.error("Error checking account duplicate:", error);
-        // 에러 발생 시 예외 처리
-      }
-    } else {
-      console.log("토큰이 없습니다. 로그인이 필요합니다."); // 토큰이 없을 경우 로그인 필요 메시지 출력
-      // 또는 사용자에게 다시 로그인하라는 경고 메시지 표시 등의 처리
-    }
-  };
+  console.log('email!!!',getEmail);
+  
   const ontempChange = (e) => {
     setTemp(e.target.value);
   };
   const handleNextClick = () => {
-    checkAccountDuplicate();
-    // console.log("계좌정보", financialInstitution, transactionNumber);
-    // navigate("/addaccount2");
+    console.log('계좌정보',financialInstitution,transactionNumber);
+    navigate("/addaccount2");
   };
   return (
     <Container>
-      {isModalOpen && (
-        <AlertOneBtnModal closeHandler={modalClose}>
-          이미 존재하는 계좌번호 입니다
-        </AlertOneBtnModal>
-      )}
       <BackAppBar label="계좌 연결 추가" />
       <WrapperInputOut>
         <Wrapper2>
