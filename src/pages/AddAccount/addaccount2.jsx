@@ -33,22 +33,22 @@ function AddAccount2({ customerName = "조현진", bank = "KB증권", accountNum
   const [financialInstitution, setFinancialInstitution] = useRecoilState(financialInstitutionState);
   const [transactionNumber, setTransactionNumber] = useRecoilState(transactionNumberState);
   const navigate = useNavigate();
+  const last3DigitsOfAccount = transactionNumber.slice(-3); // Extract the last 3 digits of the account number
 
   const handleNextClick = async () => {    
-    if (authNum === "000") {
+    if (authNum === last3DigitsOfAccount) {
         setIsAuthValid(true); // Reset error state if the authentication number is correct
         console.log('Financial Institution:', financialInstitution);
         console.log('Transaction Number:', transactionNumber);        
-      
+        const accessToken = document.cookie // 쿠키 값 가져오기
+        .split("; ")
+        .find((row) => row.startsWith("token="))
+        ?.split("=")[1];
         //계좌 연결 POST API 부분
         try {
-          const accessToken = document.cookie // 쿠키 값 가져오기
-    .split("; ")
-    .find((row) => row.startsWith("token="))
-    ?.split("=")[1];
-
+          
+          console.log(accessToken);
           // Make the API call
-          console.log(`${accessToken}`)
           const response = await axiosInstance.post(
             "/api/accounts", 
           {
@@ -59,7 +59,6 @@ function AddAccount2({ customerName = "조현진", bank = "KB증권", accountNum
           {
             headers: {
               'Authorization': `Bearer ${accessToken}`,
-              'Content-Type': 'application/json',
             },
           });
   
@@ -71,9 +70,6 @@ function AddAccount2({ customerName = "조현진", bank = "KB증권", accountNum
         } catch (error) {
           console.error('Error making API call:', error);
         }
-        
-        
-        
         navigate('/addaccount3');
 
       } else {
@@ -99,7 +95,8 @@ function AddAccount2({ customerName = "조현진", bank = "KB증권", accountNum
       <NoticeWrapper2>
         <Text>{customerName} 고객님,</Text>
         <Text>
-          {bank}({accountNumber})로 1원을 보냈습니다.
+          {financialInstitution}({transactionNumber})로 
+          <br/>1원을 보냈습니다.
         </Text>
         <Text>
           입금자명에 표시된 <Pink>인증번호 숫자 3자리</Pink>를 입력해주세요.
