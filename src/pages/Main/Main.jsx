@@ -132,14 +132,38 @@ const Main = () => {
 
       <SignupWrapper>
         <Image src={BackList} alt="금융기관이미지" />
-
-        <SignUpInput
+        <SignUpSelectBox
+          id="financialInstitution"
+          value={financialInstitution}
+          onChange={(e) => setFinancialInstitution(e.target.value)}
+        >
+          <option value="">*금융기관을 선택해주세요</option>
+          <option value="신한투자증권">신한투자증권</option>
+          <option value="교보증권">교보증권</option>
+          <option value="대신증권">대신증권</option>
+          <option value="SK증권">DB금융투자</option>
+          <option value="메리츠증권">메리츠증권</option>
+          <option value="삼성증권">삼성증권</option>
+          <option value="에스케이증권">에스케이증권</option>
+          <option value="현대차증권">현대차증권</option>
+          <option value="NH투자증권">NH투자증권</option>
+          <option value="유진투자증권">유진투자증권</option>
+          <option value=" 이베스트투자증권"> 이베스트투자증권</option>
+          <option value="키움증권">키움증권</option>
+          <option value="하이투자증권">하이투자증권</option>
+          <option value="한국투자증권">한국투자증권</option>
+          <option value="  한화투자증권"> 한화투자증권</option>
+          <option value="KB증권">KB증권</option>
+          <option value="KTB투자증권">KTB투자증권</option>
+          <option value="하나증권">하나증권</option>
+        </SignUpSelectBox>
+        {/* <SignUpInput
           id="financialInstitution"
           type="text"
           placeholder="*금융기관"
           value={financialInstitution}
           onChange={(e) => setFinancialInstitution(e.target.value)}
-        />
+        /> */}
       </SignupWrapper>
 
       <SignupWrapper>
