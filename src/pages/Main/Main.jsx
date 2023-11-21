@@ -100,7 +100,6 @@ const Main = () => {
     }
   };
 
-  console.log(islogincheck, "로그인 여부확인");
   return (
     <Container>
       {isThereModal && (
