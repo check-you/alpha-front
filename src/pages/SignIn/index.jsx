@@ -59,7 +59,7 @@ export default function SignIn() {
     event.preventDefault();
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_SERVER_PORT}/api/member/login`,
+        `${process.env.REACT_APP_SERVER_PORT}/api/user/login`,
         {
           nickName: nickname,
           password: password,
@@ -69,20 +69,20 @@ export default function SignIn() {
         }
       );
       // 토큰 값을 가져옴
-   const token = response.headers.get("Accesstoken");
-   // 토큰을 LocalStorage에 저장
-   localStorage.setItem("token", token);
+      const token = response.headers.get("Accesstoken");
+      // 토큰을 쿠키에 저장
+      //localStorage.setItem("token", token);
+      document.cookie = `token=${token}; path=/`;
+      // 로그인 성공 처리
+      console.log("로그인 성공:", response.data);
 
-   // 로그인 성공 처리
-   console.log("로그인 성공:", response.data);
-
-   // 인트로로 이동
-   navigate("/LinkedAccounts");
- } catch (error) {
-   // 로그인 실패 처리
-   setSuccessLogin(false);
-   console.error("로그인 실패:", error.response.data.reason);
- }
+      // 인트로로 이동
+      navigate("/LinkedAccounts");
+    } catch (error) {
+      // 로그인 실패 처리
+      setSuccessLogin(false);
+      console.error("로그인 실패:", error.response.data.reason);
+    }
   };
    
 
