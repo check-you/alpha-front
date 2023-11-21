@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Text, InputBox, BackAppBar } from "../../components";
+import { useRecoilState } from 'recoil'; // 추가import { Text, InputBox, BackAppBar } from "../../components";
 import {
   Container,
   Image,
@@ -21,10 +21,13 @@ import second from "../../assets/images/secondNocheck.svg";
 import third from "../../assets/images/thirdNocheck.svg";
 import design1 from "../../assets/images/design1.svg";
 import AccountNum from "../../assets/images/account.svg";
+import { financialInstitutionState } from '../../store/atoms';
+import { transactionNumberState } from '../../store/atoms';
+import { Text, InputBox, BackAppBar } from "../../components";
 
 const AddAccount = () => {
-  const [financialInstitution, setFinancialInstitution] = useState("");
-  const [transactionNumber, setTransactionNumber] = useState("");
+  const [financialInstitution, setFinancialInstitution] = useRecoilState(financialInstitutionState); // 수정
+  const [transactionNumber, setTransactionNumber] = useRecoilState(transactionNumberState); // 수정
   const navigate = useNavigate();
   const [temp, setTemp] = useState("");
 
@@ -32,7 +35,7 @@ const AddAccount = () => {
     setTemp(e.target.value);
   };
   const handleNextClick = () => {
-    // Do any necessary validation or processing here before navigating
+    console.log('계좌정보',financialInstitution,transactionNumber);
     navigate("/addaccount2");
   };
   return (
