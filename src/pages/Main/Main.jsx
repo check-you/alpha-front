@@ -74,7 +74,6 @@ const Main = () => {
       .then((response) => {
         setTransactionDatas(response.data.data.data);
         console.log("메인에서:", response.data.data.data);
-        alert("거래내역 가져오기완료!:D");
         if (response.data.success) {
           navigate(
             `/Transaction?userName=${userName}&financialInstitution=${financialInstitution}&transactionNumber=${transactionNumber}`
