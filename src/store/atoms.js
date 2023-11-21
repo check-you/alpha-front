@@ -1,5 +1,5 @@
 import { atom } from "recoil";
-import { recoilPersist } from "recoil-persist";
+// import { recoilPersist } from "recoil-persist";
 
 export const testAtom = atom({
   key: "test",
@@ -10,13 +10,23 @@ export const signUpDataAtom = atom({
   default: {
     signUpInfo: [],
   },
-  effects_UNSTABLE: [persistAtom],
+  // effects_UNSTABLE: [persistAtom],
 });
 
-const { persistAtom } = recoilPersist({
-  key: "recoil-persist",
-  storage: sessionStorage,
+export const transactionFromApi = atom({
+  key: "transactionApis",
+  default: {
+    name: "",
+    bank: "",
+    account: "",
+    transactionList: [],
+  },
 });
+
+// const { persistAtom } = recoilPersist({
+//   key: "recoil-persist",
+//   storage: sessionStorage,
+// });
 
 export const loginState = atom({
   key: "loginState",
@@ -28,5 +38,5 @@ export const loginState = atom({
       phone: "",
     },
   },
-  effects_UNSTABLE: [persistAtom],
+  // effects_UNSTABLE: [persistAtom],
 });
