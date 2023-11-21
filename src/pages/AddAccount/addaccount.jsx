@@ -15,6 +15,7 @@ import {
   Button,
   SignUpSelectBox,
 } from "./styled";
+import { loginUserEmail, isLoginAtom } from "../../store/atoms";
 import BackList from "../../assets/images/banklist.svg";
 import first from "../../assets/images/firstChecked.svg";
 import second from "../../assets/images/secondNocheck.svg";
@@ -24,13 +25,18 @@ import AccountNum from "../../assets/images/account.svg";
 import { financialInstitutionState } from '../../store/atoms';
 import { transactionNumberState } from '../../store/atoms';
 import { Text, InputBox, BackAppBar } from "../../components";
+import { useRecoilValue } from "recoil";
 
 const AddAccount = () => {
+  const [email, setEmail] = React.useState("");
   const [financialInstitution, setFinancialInstitution] = useRecoilState(financialInstitutionState); // 수정
   const [transactionNumber, setTransactionNumber] = useRecoilState(transactionNumberState); // 수정
   const navigate = useNavigate();
   const [temp, setTemp] = useState("");
+  const getEmail = useRecoilValue(loginUserEmail);
 
+  console.log('email!!!',getEmail);
+  
   const ontempChange = (e) => {
     setTemp(e.target.value);
   };

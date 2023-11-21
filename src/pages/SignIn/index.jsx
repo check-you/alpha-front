@@ -85,6 +85,8 @@ export default function SignIn() {
         // 이메일 recoil값으로 저장하기 & 로그인 여부 확인
         setIsLoginAtom(true);
         setUserEmail(email);
+        console.log(email);
+        
         // 인트로로 이동
         navigate("/linkedaccounts");
       } else {
