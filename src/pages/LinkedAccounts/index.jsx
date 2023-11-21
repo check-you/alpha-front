@@ -25,11 +25,10 @@ import {
 import { async } from "q";
 const LinkedAccounts = () => {
   const setIsLoginFalse = useSetRecoilState(isLoginAtom);
+  const setUserEmail = useSetRecoilState(loginUserEmail);
   const getUserEmail = useRecoilValue(loginUserEmail);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [accountToDelete, setAccountToDelete] = useState(0);
-  const [updateAcc, setUpdateAcc] = useState([]);
-  const [accounts, setAccounts] = useState({});
   const [accountsData, setAccountsData] = useState({});
   const navigate = useNavigate();
   const openDeleteModal = (accountN) => {
@@ -49,7 +48,7 @@ const LinkedAccounts = () => {
       .catch((e) => {
         console.log(e);
       });
-    alert("계좌 가 삭제되었습니다."); // 계좌 삭제 알림
+    // alert("계좌 가 삭제되었습니다."); // 계좌 삭제 알림
     setIsDeleteModalOpen(false);
   };
 
@@ -101,6 +100,7 @@ const LinkedAccounts = () => {
   const logoutHandler = async () => {
     // Delete token from cookies
     setIsLoginFalse(false);
+    setUserEmail("");
     document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     // Redirect to the main page
     navigate("/");
