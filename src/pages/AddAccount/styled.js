@@ -173,8 +173,9 @@ export const AccountInfo = styled.div`
 `;
 
 export const Image2 = styled.img`
-  width: 30%;
+  width: 20%;
   padding: 20px;
+  border-radius: 100%;
 `;
 
 export const ForLayout2 = styled.img`

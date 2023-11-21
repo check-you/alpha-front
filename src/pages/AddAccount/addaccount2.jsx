@@ -17,21 +17,65 @@ import {
   Pink,
   ForLayout,
 } from "./styled";
-
+import { useRecoilState } from 'recoil';  // <-- Import useRecoilState
+import { financialInstitutionState, transactionNumberState } from '../../store/atoms';
 import first from "../../assets/images/firstNocheck.svg";
 import second from "../../assets/images/secondCheck.svg";
 import third from "../../assets/images/thirdNocheck.svg";
 import design1 from "../../assets/images/design1.svg";
 import AccountNum from "../../assets/images/account.svg";
+import { axiosInstance } from "../../apis";
+import Cookies from 'js-cookie';
+
 function AddAccount2({ customerName = "조현진", bank = "KB증권", accountNumber = "93931967948" }) {
   const [authNum, setAuthNum] = useState("");
   const [isAuthValid, setIsAuthValid] = useState(true); // Track the validity of the authentication number
-  const navigate = useNavigate(); 
-  
-  const handleNextClick = () => {
+  const [financialInstitution, setFinancialInstitution] = useRecoilState(financialInstitutionState);
+  const [transactionNumber, setTransactionNumber] = useRecoilState(transactionNumberState);
+  const navigate = useNavigate();
+
+  const handleNextClick = async () => {    
     if (authNum === "000") {
         setIsAuthValid(true); // Reset error state if the authentication number is correct
+        console.log('Financial Institution:', financialInstitution);
+        console.log('Transaction Number:', transactionNumber);        
+      
+        //계좌 연결 POST API 부분
+        try {
+          const accessToken = document.cookie // 쿠키 값 가져오기
+    .split("; ")
+    .find((row) => row.startsWith("token="))
+    ?.split("=")[1];
+
+          // Make the API call
+          console.log(`${accessToken}`)
+          const response = await axiosInstance.post(
+            "/api/accounts", 
+          {
+            bank: financialInstitution,
+            account: transactionNumber,
+            category: '연금 저축 계좌',
+          }, 
+          {
+            headers: {
+              'Authorization': `Bearer ${accessToken}`,
+              'Content-Type': 'application/json',
+            },
+          });
+  
+          // Handle the response as needed
+          console.log('API Response:', response.data);
+  
+          // Continue with navigation
+          navigate('/addaccount3');
+        } catch (error) {
+          console.error('Error making API call:', error);
+        }
+        
+        
+        
         navigate('/addaccount3');
+
       } else {
         setIsAuthValid(false); // Set error state if the authentication number is incorrect
       }

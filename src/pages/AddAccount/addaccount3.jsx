@@ -25,11 +25,30 @@ import first from "../../assets/images/firstNocheck.svg";
 import second from "../../assets/images/secondNocheck.svg";
 import third from "../../assets/images/thirdCheck.svg";
 import design1 from "../../assets/images/design1.svg";
+import { useRecoilValue } from 'recoil';
+import { financialInstitutionState, transactionNumberState } from '../../store/atoms';
+import shinhan from "../../assets/images/shinhanLogo.svg";
+import kb from "../../assets/images/kbIcon.svg";
+import nh from "../../assets/images/nhlogo.svg";
+
 
 function AddAccount3({ customerName = "조현진", bank = "KB증권", accountNumber = "93931967948" }) {
+  const financialInstitution = useRecoilValue(financialInstitutionState);
+  const transactionNumber = useRecoilValue(transactionNumberState);
   const navigate = useNavigate();
   const handleNextClick = () => {
     navigate('/LinkedAccounts');
+  };
+  // Determine the logo source based on the financial institution
+  const getLogoSource = () => {
+    switch (financialInstitution) {
+      case 'KB증권':
+        return kb;
+      case 'NH투자증권':
+        return nh;
+      default:
+        return shinhan;
+    }
   };
   return (
     <Container>
@@ -54,13 +73,13 @@ function AddAccount3({ customerName = "조현진", bank = "KB증권", accountNum
       </NoticeWrapper3>
 
       <AccountView>
-        <Image2 src={backIcon} alt="돌아가기" />
+        <Image2 src={getLogoSource()} alt="증권사" />
         <AccountInfo>
           <Text>
-            {bank}
+            {financialInstitution}
           </Text>
           <Text>
-            ({accountNumber})
+            ({transactionNumber})
           </Text>
         </AccountInfo>
       </AccountView>
