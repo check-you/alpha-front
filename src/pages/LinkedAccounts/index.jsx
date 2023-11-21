@@ -37,17 +37,15 @@ const LinkedAccounts = () => {
   };
   const deleteAccountApi = async (accountToDelete, token) => {
     axiosInstance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-
     axiosInstance
-      .delete("/api/accounts", { account: accountToDelete })
+      .delete("/api/accounts", { data: { account: accountToDelete } })
       .then((response) => {
-        console.log(response.data);
-        alert("연결된 계좌 리스트!:D");
+        console.log("삭제~");
       })
       .catch((e) => {
         console.log(e);
       });
-    alert(`계좌 ${accountToDelete}가 삭제되었습니다.`); // 계좌 삭제 알림
+    alert("계좌 가 삭제되었습니다."); // 계좌 삭제 알림
     setIsDeleteModalOpen(false);
   };
 
@@ -60,6 +58,7 @@ const LinkedAccounts = () => {
     if (token) {
       deleteAccountApi(accountToDelete, token)
         .then(() => {
+          console.log("삭제 후, 화면 다시그리는 거 ");
           getTrnasactions(token);
         })
         .catch((error) => {
@@ -84,9 +83,11 @@ const LinkedAccounts = () => {
     axiosInstance
       .get(`/api/accounts/${getUserEmail}`)
       .then((response) => {
-        console.log(response.data);
+        console.log(response, "response 그냥 ");
+        console.log(response.data, "response + data ");
+        console.log(response.data.data, "response + data + data ");
+        console.log(response.data.data.data, "response + data + data +data");
         setAccountsData(response.data.data);
-        setAccounts(response);
         alert("연결된 계좌 리스트!:D");
       })
       .catch((e) => {
@@ -113,11 +114,13 @@ const LinkedAccounts = () => {
 
   useEffect(() => {
     console.log(accountsData, "어카운츠-데이터");
-    console.log(accountsData.name, "이름");
-    console.log(accountsData.listCnt, "갯수");
-    console.log(accountsData.accountList, "계좌리스트");
-    console.log(accountsData.accountList[1].account, "계좌리스트[1]");
-  }, [accounts, accountsData]);
+    if (accountsData) {
+      // accountsData가 존재할 때만 해당 속성을 참조하도록 수정
+      console.log(accountsData.name, "이름");
+      console.log(accountsData.listCnt, "갯수");
+      console.log(accountsData.accountList, "계좌리스트");
+    }
+  }, [accountsData]);
   return (
     <Container>
       {isDeleteModalOpen && (
@@ -133,12 +136,12 @@ const LinkedAccounts = () => {
       <ContentWrapper>
         <TitleWrapper>
           <NameWrapper>
-            <Text theme="dashBoardName">{accountsData.name}권기훈</Text>
+            <Text theme="dashBoardName">{accountsData.name}</Text>
             <Text theme="dashBoardInfo"> 님의 계좌정보</Text>
           </NameWrapper>
           <NameWrapperbottom>
             <Text theme="dashBoard">
-              총 연결 계좌 {accountsData.listCnt}3 개
+              총 연결 계좌 {accountsData.listCnt} 개
             </Text>
           </NameWrapperbottom>
         </TitleWrapper>
@@ -149,7 +152,7 @@ const LinkedAccounts = () => {
                 key={index}
                 deleteHandler={openDeleteModal}
                 bank={item.bank}
-                accountNum={item.account}
+                account={item.account}
                 category={item.category}
               />
             ))}
