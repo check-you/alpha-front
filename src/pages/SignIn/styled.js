@@ -9,4 +9,5 @@ export const Text = styled.div`
   color: #6f1c7e;
   text-align: right;
   padding-right: 5%;
+  font-weight: light;
 `;

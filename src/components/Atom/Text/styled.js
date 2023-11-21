@@ -1,3 +1,4 @@
+import { right } from "@popperjs/core";
 import styled from "styled-components";
 
 const textStyles = {
@@ -5,6 +6,12 @@ const textStyles = {
     fontWeight: "bold",
     fontSize: "1vw",
     color: "#333333",
+  },
+  textttt: {
+    fontWeight: "light",
+    fontSize: "2vw",
+    color: "#6f1c7e",
+    padding: "0px 10px",
   },
   text2: {
     fontWeight: "bold",

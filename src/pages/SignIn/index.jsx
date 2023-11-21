@@ -15,8 +15,8 @@ import { purple } from "@mui/material/colors";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Logo from "../../assets/images/logo.svg";
-import { Image , Text } from "./styled";
-import { HomeAppBar } from "../../components";
+import { Image } from "./styled";
+import { HomeAppBar , Text } from "../../components";
 import { useNavigate } from "react-router-dom";
 import { axiosInstance } from "../../apis";
 
@@ -183,9 +183,9 @@ export default function SignIn() {
               <p>아이디와 비밀번호를 다시 확인해주세요.</p>
             )}
             <Grid container justifyContent="center" alignItems="center">
-              <Text>아직 계정이 없으신가요? </Text>
-              <Link href="/signup" underline="none" variant="body2" style={{ width: '30%', textAlign: 'left' }}>
-                {"회원가입"}
+              <Text theme="textttt">아직 계정이 없으신가요? </Text>
+              <Link href="/signup" underline="none" variant="body2" style={{ width: '30%', textAlign: 'left' , fontWeight: 'bold'}}>
+                <Text>회원가입</Text>
               </Link>
             </Grid>
           </Box>
