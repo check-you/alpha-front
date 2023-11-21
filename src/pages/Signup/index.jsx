@@ -91,18 +91,19 @@ const Signup = () => {
       email: userEmail,
       password: pw,
     });
-    // console.log(settingComSignupData);
   };
 
   const emailDuplicate = async () => {
     axiosInstance
       .get(`/api/user/duplicate/${userEmail}`)
       .then((response) => {
-        if (response.data) {
+        if (response.data.success == false) {
           setSignupData();
           navigate("/signupa");
+          console.log(response.data, "duplicate요청");
           console.log(settingComSignupData);
         } else {
+          console.log(response.data, "duplicate요청");
           alert("중복된 이메일임");
         }
       })
