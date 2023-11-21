@@ -17,7 +17,7 @@ import {
   LogoImage,
   ErrorMessage,
 } from "./styled";
-import { AlertModal } from "../../components";
+import { AlertModal, AlertOneBtnModal } from "../../components";
 import User from "../../assets/images/signupUser.svg";
 import BackList from "../../assets/images/banklist.svg";
 import AccountNum from "../../assets/images/account.svg";
@@ -27,7 +27,7 @@ import ID from "../../assets/images/saupja.svg";
 const Main = () => {
   const setTransactionDatas = useSetRecoilState(transactionFromApi);
   const [userName, setUserName] = useState("");
-  const [isThere, setIsThere] = useState(false);
+  const [isThereModal, SetIsThereModal] = useState(false);
   const [financialInstitution, setFinancialInstitution] = useState("");
   const [transactionNumber, setTransactionNumber] = useState("");
   const [affiliation, setAffiliation] = useState("");
@@ -39,6 +39,12 @@ const Main = () => {
     setModalOpen(true);
   };
   const modalClose = () => {
+    setModalOpen(false);
+  };
+  const isThereModalOpen = () => {
+    setModalOpen(true);
+  };
+  const isThereModalClose = () => {
     setModalOpen(false);
   };
   const handleCloseAlert = () => {
@@ -73,6 +79,7 @@ const Main = () => {
             `/Transaction?userName=${userName}&financialInstitution=${financialInstitution}&transactionNumber=${transactionNumber}`
           );
         } else {
+          isThereModalOpen();
           alert("등록된 사용자가 아닙니다. ");
         }
       })
@@ -96,6 +103,11 @@ const Main = () => {
 
   return (
     <Container>
+      {isThereModal && (
+        <AlertOneBtnModal closeHandelr={isThereModalClose}>
+          존재하지 않는 사용자입니다
+        </AlertOneBtnModal>
+      )}
       {isModalOpen && (
         <AlertModal
           closeHandler={handleCloseAlert}
