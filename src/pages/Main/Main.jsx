@@ -25,6 +25,7 @@ import ID from "../../assets/images/saupja.svg";
 
 const Main = () => {
   const setTransactionDatas = useSetRecoilState(transactionFromApi);
+  const getTransactionDatas = useRecoilValue(transactionFromApi);
   const getIsLoginAtom = useSetRecoilState(isLoginAtom);
   const islogincheck = useRecoilValue(isLoginAtom);
   const [userName, setUserName] = useState("");
@@ -70,8 +71,8 @@ const Main = () => {
         account: transactionNumber,
       })
       .then((response) => {
-        setTransactionDatas(response.data);
-        console.log(response.data);
+        setTransactionDatas(response.data.data.data);
+        console.log("메인에서:", response.data.data.data);
         alert("거래내역 가져오기완료!:D");
         if (response.data.success) {
           navigate(
