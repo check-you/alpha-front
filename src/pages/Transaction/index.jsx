@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { axiosInstance } from "../../apis";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import {
   Text,
   Button,
@@ -22,14 +22,18 @@ import {
 import design1 from "../../assets/images/design1.svg";
 
 const Transaction = () => {
-  const getTrnasactions = async () => {
+  // const { userName, financialInstitution, transactionNumber } = useParams();
+  // const [transactionItems, getTrnasactionItems] = useEffect("");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const queryString = location.search;
+  const getTransactions = async () => {
     axiosInstance
       .post("/api/main/search", {
-        name: userName,
-        bank: financialInstitution,
-        account: transactionNumber,
-        belong: affiliation,
-        businessCode: userNumber,
+        name: searchParams.get("userName"),
+        bank: searchParams.get("financialInstitution"),
+        account: searchParams.get("transactionNumber"),
+        // belong: searchParams.get("affiliation"),
+        // businessCode: searchParams.get("userNumber"),
       })
       .then((response) => {
         console.log(response.data);
@@ -41,8 +45,17 @@ const Transaction = () => {
   };
 
   useEffect(() => {
-    getTrnasactions();
+    console.log(searchParams.get("userName"));
+    console.log(searchParams.get("affiliation"));
+    console.log(searchParams.get("userNumber"));
+    console.log(searchParams.get("transactionNumber"));
+    console.log(searchParams.get("userName"));
+    getTransactions();
   }, []);
+
+  const getUpDownClass = (value) => {
+    return value > 0 ? "transactionUp" : "transactionDown";
+  };
 
   return (
     <Container>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Text, Button, BackAppBar } from "../../components";
 import {
@@ -17,16 +17,7 @@ import face from "../../assets/images/signupComplete.svg";
 const SignupC = () => {
   const navigate = useNavigate();
   const handleSubmit = () => {
-    if (true) {
-      // 수정: 비밀번호 확인
-      // 실행할 코드 (예: 회원가입 요청)
-      // axiosInstance.post("/auth/signup", {...})
-      // .then(response => { ... })
-      // .catch(error => { ... });
-      navigate("/transaction");
-    } else {
-      alert("비밀번호가 일치하지 않습니다.");
-    }
+    navigate("/transaction");
   };
   return (
     <Container>
