@@ -15,6 +15,7 @@ import {
   SignUpInput,
   LogoImage,
   ErrorMessage,
+  SignUpSelectBox,
 } from "./styled";
 import { AlertModal, AlertOneBtnModal } from "../../components";
 import User from "../../assets/images/signupUser.svg";
@@ -56,7 +57,7 @@ const Main = () => {
     navigate("/signin");
   };
   const handleIsLogin = () => {
-    console.log('넘어가기전',islogincheck);
+    console.log("넘어가기전", islogincheck);
     if (islogincheck) {
       navigate("/linkedaccounts");
     } else {
@@ -99,7 +100,7 @@ const Main = () => {
     }
   };
 
-  console.log(islogincheck , "로그인 여부확인");
+  console.log(islogincheck, "로그인 여부확인");
   return (
     <Container>
       {isThereModal && (
@@ -131,6 +132,7 @@ const Main = () => {
 
       <SignupWrapper>
         <Image src={BackList} alt="금융기관이미지" />
+
         <SignUpInput
           id="financialInstitution"
           type="text"
