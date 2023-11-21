@@ -96,7 +96,7 @@ const Signup = () => {
 
   const emailDuplicate = async () => {
     axiosInstance
-      .post(`/api/user/duplicate/${userEmail}`)
+      .get(`/api/user/duplicate/${userEmail}`)
       .then((response) => {
         if (response.data) {
           setSignupData();
