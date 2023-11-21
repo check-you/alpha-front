@@ -8,7 +8,10 @@ export const testAtom = atom({
 export const signUpDataAtom = atom({
   key: "signUpData",
   default: {
-    signUpInfo: [],
+    name: "",
+    phoneNumber: 0,
+    email: "",
+    password: 0,
   },
   // effects_UNSTABLE: [persistAtom],
 });

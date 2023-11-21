@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { signUpDataAtom } from "../../store/atoms";
+import { axiosInstance } from "../../apis";
 import { Text, Button, BackAppBar } from "../../components";
 import {
   Container,
@@ -16,32 +19,82 @@ import second from "../../assets/images/secondNocheck.svg";
 import third from "../../assets/images/thirdCheck.svg";
 const SignupB = () => {
   const navigate = useNavigate();
+  const getSignupData = useRecoilValue(signUpDataAtom);
   const [isEmailSubmit, setIsEmailSubmit] = useState(false);
   const [isAuthComplete, setIsAuthComplete] = useState(false);
-
   useEffect(() => {
-    fetchAuthStatus(); // API를 통해 인증 상태를 가져오는 함수 호출
+    console.log(getSignupData.name);
   }, []);
-  const fetchAuthStatus = async () => {
-    try {
-      // API를 통해 isAuthComplete 값을 가져옴 (예시: fetch, axios 등을 사용)
-      const response = await fetch("API_URL_HERE");
-      const data = await response.json();
-      setIsAuthComplete(data.isAuthComplete); // API에서 받아온 값으로 isAuthComplete 상태 설정
-    } catch (error) {
-      console.error("Error fetching authentication status:", error);
-    }
+  // const getIsEmailOk = async () => {
+  //   axiosInstance
+  //     .post("/api/user/confirm/auth", {
+
+  //     })
+  //     .then((response) => {
+  //       setTransactionDatas(response.data);
+  //       console.log(response.data);
+  //       alert("거래내역 가져오기완료!:D");
+  //       if (response.data.success) {
+  //         navigate(
+  //           `/Transaction?userName=${userName}&financialInstitution=${financialInstitution}&transactionNumber=${transactionNumber}`
+  //         );
+  //       }
+  //     })
+  //     .catch((e) => {
+  //       isThereModalOpen();
+  //       console.log(e);
+  //     });
+  // };
+
+  const onSignUp = async () => {
+    axiosInstance
+      .post("/api/user/signIn", {
+        name: getSignupData.name,
+        phoneNumber: getSignupData.phoneNumber,
+        email: getSignupData.email,
+        password: getSignupData.password,
+      })
+      .then((response) => {
+        alert("로그인 요청 완");
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   };
 
+  const isEmailAuthCom = async () => {
+    axiosInstance
+      .post("/api/user/confirm/auth", {
+        email: getSignupData.email,
+      })
+      .then((response) => {
+        if (response.success) {
+          navigate("/signuc");
+        } else {
+          alert("이메일 인증해");
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+  // const fetchAuthStatus = async () => {
+  //   try {
+  //     // API를 통해 isAuthComplete 값을 가져옴 (예시: fetch, axios 등을 사용)
+  //     const response = await fetch("API_URL_HERE");
+  //     const data = await response.json();
+  //     setIsAuthComplete(data.isAuthComplete); // API에서 받아온 값으로 isAuthComplete 상태 설정
+  //   } catch (error) {
+  //     console.error("Error fetching authentication status:", error);
+  //   }
+  // };
+
   const emailSubmitClick = () => {
+    onSignUp();
     setIsEmailSubmit(true); // 이메일 보내기 버튼 클릭 시 isEmailSubmit 값을 true로 변경
   };
   const handleAuthButtonClick = () => {
-    if (isAuthComplete) {
-      navigate("/signupc"); // isAuthComplete 값이 true일 때만 navigate가 작동
-    } else {
-      alert("이메일 인증을 완료해주세요.");
-    }
+    isEmailAuthCom();
   };
   return (
     <Container>
@@ -58,7 +111,7 @@ const SignupB = () => {
         <BackgroundImage src={design1} alt="디자인" />
 
         <WrapperInner>
-          <Text theme="signupContents1">조현진 고객님</Text>
+          <Text theme="signupContents1">{getSignupData.name} 고객님</Text>
           <Text theme="signupContents2">
             이메일로 본인 인증을 진행해주세요.
           </Text>

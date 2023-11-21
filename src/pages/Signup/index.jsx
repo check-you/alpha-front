@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+// 회원가입 데이터 저장할 리코일 임포트하기
+import { useSetRecoilState, useRecoilValue } from "recoil";
+import { signUpDataAtom } from "../../store/atoms";
 import { axiosInstance } from "../../apis";
 import { useNavigate } from "react-router-dom";
 import { Text, Button, BackAppBar } from "../../components";
@@ -24,6 +27,8 @@ import second from "../../assets/images/secondNocheck.svg";
 import third from "../../assets/images/thirdNocheck.svg";
 
 const Signup = () => {
+  const setterSignupData = useSetRecoilState(signUpDataAtom);
+  const settingComSignupData = useRecoilValue(signUpDataAtom);
   const [userEmail, setuserEmail] = useState("");
   const [pw, setPw] = useState("");
   const [pwConfirm, setPwConfirm] = useState(""); // 추가: 비밀번호 확인을 위한 상태값
@@ -79,28 +84,35 @@ const Signup = () => {
     emailCheck(e.target.value);
   };
 
-  const onSignUp = async () => {
+  const setSignupData = async () => {
+    setterSignupData({
+      name: userName,
+      phoneNumber: userPhone,
+      email: userEmail,
+      password: pw,
+    });
+    // console.log(settingComSignupData);
+  };
+
+  const emailDuplicate = async () => {
     axiosInstance
-      .post("/api/user/signIn", {
-        name: userName,
-        phoneNumber: userPhone,
-        email: userEmail,
-        userPw: pw,
-      })
+      .post(`/api/user/duplicate/${userEmail}`)
       .then((response) => {
-        console.log(response.data);
-        alert("가입이 완료되었습니다. 로그인을 진행해주세요.");
-        navigate("/signupa");
+        if (response.data) {
+          setSignupData();
+          navigate("/signupa");
+          console.log(settingComSignupData);
+        } else {
+          alert("중복된 이메일임");
+        }
       })
       .catch((e) => {
         console.log(e);
       });
   };
-
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (pw === pwConfirm) {
-      // onSignup();
-      navigate("/signupa");
+      emailDuplicate();
     } else {
       alert("비밀번호가 일치하지 않습니다.");
     }
