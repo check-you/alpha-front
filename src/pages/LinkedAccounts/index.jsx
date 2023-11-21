@@ -48,7 +48,6 @@ const LinkedAccounts = () => {
       .catch((e) => {
         console.log(e);
       });
-    // alert("계좌 가 삭제되었습니다."); // 계좌 삭제 알림
     setIsDeleteModalOpen(false);
   };
 
