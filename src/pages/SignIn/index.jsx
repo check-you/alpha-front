@@ -17,6 +17,7 @@ import { Image } from "./styled";
 import { HomeAppBar } from "../../components";
 import axios from "../../apis/index";
 import { useNavigate } from "react-router-dom";
+import { axiosInstance } from "../../apis";
 
 const defaultTheme = createTheme({
   palette: {
@@ -58,32 +59,37 @@ export default function SignIn() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_SERVER_PORT}/api/user/login`,
+      const response = await axiosInstance.post(
+        "/api/user/login",  // Remove baseURL from the URL
         {
-          nickName: nickname,
+          email: email,
           password: password,
         },
         {
           withCredentials: true,
         }
       );
-      // 토큰 값을 가져옴
-      const token = response.headers.get("Accesstoken");
-      // 토큰을 쿠키에 저장
-      //localStorage.setItem("token", token);
-      document.cookie = `token=${token}; path=/`;
-      // 로그인 성공 처리
-      console.log("로그인 성공:", response.data);
-
-      // 인트로로 이동
-      navigate("/linkedaccounts");
+      console.log(response);
+      if (response) {
+        // 토큰 값을 가져옴
+        const token = response.headers.get("Accesstoken");
+        // 토큰을 쿠키에 저장
+        //localStorage.setItem("token", token);
+        document.cookie = `token=${token}; path=/`;
+        // 로그인 성공 처리
+        console.log("로그인 성공:", response.data);
+  
+        // 인트로로 이동
+        navigate("/linkedaccounts");
+      } else {
+        // response가 정의되어 있지 않거나 data 속성이 없을 때의 처리
+        console.error("서버 응답에 문제가 있습니다.");
+      }
     } catch (error) {
       // 로그인 실패 처리
       setSuccessLogin(false);
-      console.error("로그인 실패:", error.response.data.reason);
+      console.error("로그인 실패:",error, error.response?.data?.reason || "알 수 없는 오류");
     }
-
   };
    
 
@@ -163,7 +169,7 @@ export default function SignIn() {
               disabled={!isEmailValid || !isPasswordValid}
               >로그인</Button>
               {successLogin ? null : (
-                <p className={styles.loginError}>
+                <p>
                   아이디와 비밀번호를 다시 확인해주세요.
                 </p>
               )}
