@@ -97,7 +97,7 @@ const Signup = () => {
     axiosInstance
       .get(`/api/user/duplicate/${userEmail}`)
       .then((response) => {
-        if (response.data.success == false) {
+        if (response.data.data == false) {
           setSignupData();
           navigate("/signupa");
           console.log(response.data, "duplicate요청");
