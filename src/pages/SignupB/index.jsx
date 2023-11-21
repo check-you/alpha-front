@@ -68,8 +68,8 @@ const SignupB = () => {
         email: getSignupData.email,
       })
       .then((response) => {
-        if (response.success) {
-          navigate("/signuc");
+        if (response.data) {
+          navigate("/signupc");
         } else {
           alert("이메일 인증해");
         }

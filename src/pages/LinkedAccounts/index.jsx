@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useRecoilValue , useSetRecoilState} from "recoil";
-import { loginUserEmail , isLoginAtom } from "../../store/atoms";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { loginUserEmail, isLoginAtom } from "../../store/atoms";
 import { axiosInstance } from "../../apis";
 import { useNavigate } from "react-router-dom";
 import {
@@ -9,7 +9,6 @@ import {
   AddAccountBtn,
   HomeAppBar,
   SelectModal,
-
 } from "../../components";
 import {
   Container,
@@ -93,14 +92,13 @@ const LinkedAccounts = () => {
         console.log(response.data.data, "response + data + data ");
         console.log(response.data.data.data, "response + data + data +data");
         setAccountsData(response.data.data);
-        alert("연결된 계좌 리스트!:D");
       })
       .catch((e) => {
         console.log(e);
       });
   };
 
-  const logoutHandler = async() => {
+  const logoutHandler = async () => {
     // Delete token from cookies
     setIsLoginFalse(false);
     document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
@@ -153,7 +151,7 @@ const LinkedAccounts = () => {
             <Text theme="dashBoardInfo"> 님의 계좌정보</Text>
           </NameWrapper>
           <Link to="/" onClick={logoutHandler}>
-            <Logout >로그아웃</Logout>
+            <Logout>로그아웃</Logout>
           </Link>
           <NameWrapperbottom>
             <Text theme="dashBoard">
