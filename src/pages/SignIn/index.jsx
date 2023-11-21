@@ -14,8 +14,8 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { purple } from "@mui/material/colors";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import Logo from "../../assets/images/logo.svg";
-import { Image , Text } from "./styled";
+import Logo from "../../assets/images/DoubleCheck.svg";
+import { Image, Text } from "./styled";
 import { HomeAppBar } from "../../components";
 import { useNavigate } from "react-router-dom";
 import { axiosInstance } from "../../apis";
@@ -184,7 +184,12 @@ export default function SignIn() {
             )}
             <Grid container justifyContent="center" alignItems="center">
               <Text>아직 계정이 없으신가요? </Text>
-              <Link href="/signup" underline="none" variant="body2" style={{ width: '30%', textAlign: 'left' }}>
+              <Link
+                href="/signup"
+                underline="none"
+                variant="body2"
+                style={{ width: "30%", textAlign: "left" }}
+              >
                 {"회원가입"}
               </Link>
             </Grid>
