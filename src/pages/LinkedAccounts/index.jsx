@@ -170,9 +170,6 @@ const LinkedAccounts = () => {
                 category={item.category}
               />
             ))}
-          {/* <LinkedAccount deleteHandler={openDeleteModal} accountNum="222" />
-          <LinkedAccount deleteHandler={openDeleteModal} accountNum="223" /> */}
-          {/* 여기에 들어갈 내용 1. 금융기관 bank 2. 상품명 category 3. 계좌번호 accountNum */}
         </AccountWrapper>
       </ContentWrapper>
       <AddBtnWrapper>

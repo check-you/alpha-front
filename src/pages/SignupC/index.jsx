@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { signUpDataAtom } from "../../store/atoms";
 import { Text, Button, BackAppBar } from "../../components";
 import {
@@ -18,8 +18,15 @@ import face from "../../assets/images/signupComplete.svg";
 
 const SignupC = () => {
   const getUserData = useRecoilValue(signUpDataAtom);
+  const setUserData = useSetRecoilState(signUpDataAtom);
   const navigate = useNavigate();
   const handleSubmit = () => {
+    setUserData({
+      name: "",
+      phoneNumber: 0,
+      email: "",
+      password: 0,
+    });
     navigate("/signin");
   };
   return (
@@ -33,7 +40,7 @@ const SignupC = () => {
 
         <WrapperInner>
           <Image src={face} alt="completes"></Image>
-          <Text theme="signupContents1">{getUserData.name}조현진 고객님</Text>
+          <Text theme="signupContents1">{getUserData.name} 고객님</Text>
           <Text theme="signupContents2">가입이 완료되었습니다!</Text>
         </WrapperInner>
         <WrapperInner>
