@@ -11,11 +11,11 @@ const Modal = ({ closeHandler, LoginHandler, children }) => {
         <Text theme="accountCorp">{children}</Text>
       </TextWrapper>
       <BtnWrapper>
-        <Button theme="closeBtnAlert" onClick={closeHandler}>
-          닫기
-        </Button>
         <Button theme="loginBtnAlert" onClick={LoginHandler}>
           로그인 하기
+        </Button>
+        <Button theme="closeBtnAlert" onClick={closeHandler}>
+          닫기
         </Button>
       </BtnWrapper>
     </Container>
