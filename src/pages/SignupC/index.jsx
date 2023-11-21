@@ -1,5 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { signUpDataAtom } from "../../store/atoms";
 import { Text, Button, BackAppBar } from "../../components";
 import {
   Container,
@@ -15,9 +17,17 @@ import design1 from "../../assets/images/design1.svg";
 import face from "../../assets/images/signupComplete.svg";
 
 const SignupC = () => {
+  const getUserData = useRecoilValue(signUpDataAtom);
+  const setUserData = useSetRecoilState(signUpDataAtom);
   const navigate = useNavigate();
   const handleSubmit = () => {
-    navigate("/transaction");
+    setUserData({
+      name: "",
+      phoneNumber: 0,
+      email: "",
+      password: 0,
+    });
+    navigate("/signin");
   };
   return (
     <Container>
@@ -30,12 +40,12 @@ const SignupC = () => {
 
         <WrapperInner>
           <Image src={face} alt="completes"></Image>
-          <Text theme="signupContents1">조현진 고객님</Text>
+          <Text theme="signupContents1">{getUserData.name} 고객님</Text>
           <Text theme="signupContents2">가입이 완료되었습니다!</Text>
         </WrapperInner>
         <WrapperInner>
           <Button theme="submitBtn" onClick={handleSubmit}>
-            내 계좌 관리하러 가기
+            로그인하러가기
           </Button>
         </WrapperInner>
       </WrapperContent>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useRecoilValue , useSetRecoilState} from "recoil";
-import { loginUserEmail , isLoginAtom } from "../../store/atoms";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { loginUserEmail, isLoginAtom } from "../../store/atoms";
 import { axiosInstance } from "../../apis";
 import { useNavigate } from "react-router-dom";
 import {
@@ -9,7 +9,6 @@ import {
   AddAccountBtn,
   HomeAppBar,
   SelectModal,
-
 } from "../../components";
 import {
   Container,
@@ -26,11 +25,10 @@ import {
 import { async } from "q";
 const LinkedAccounts = () => {
   const setIsLoginFalse = useSetRecoilState(isLoginAtom);
+  const setUserEmail = useSetRecoilState(loginUserEmail);
   const getUserEmail = useRecoilValue(loginUserEmail);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [accountToDelete, setAccountToDelete] = useState(0);
-  const [updateAcc, setUpdateAcc] = useState([]);
-  const [accounts, setAccounts] = useState({});
   const [accountsData, setAccountsData] = useState({});
   const navigate = useNavigate();
   const openDeleteModal = (accountN) => {
@@ -50,7 +48,7 @@ const LinkedAccounts = () => {
       .catch((e) => {
         console.log(e);
       });
-    alert("계좌 가 삭제되었습니다."); // 계좌 삭제 알림
+    // alert("계좌 가 삭제되었습니다."); // 계좌 삭제 알림
     setIsDeleteModalOpen(false);
   };
 
@@ -93,16 +91,16 @@ const LinkedAccounts = () => {
         console.log(response.data.data, "response + data + data ");
         console.log(response.data.data.data, "response + data + data +data");
         setAccountsData(response.data.data);
-        alert("연결된 계좌 리스트!:D");
       })
       .catch((e) => {
         console.log(e);
       });
   };
 
-  const logoutHandler = async() => {
+  const logoutHandler = async () => {
     // Delete token from cookies
     setIsLoginFalse(false);
+    setUserEmail("");
     document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     // Redirect to the main page
     navigate("/");
@@ -153,7 +151,7 @@ const LinkedAccounts = () => {
             <Text theme="dashBoardInfo"> 님의 계좌정보</Text>
           </NameWrapper>
           <Link to="/" onClick={logoutHandler}>
-            <Logout >로그아웃</Logout>
+            <Logout>로그아웃</Logout>
           </Link>
           <NameWrapperbottom>
             <Text theme="dashBoard">
@@ -172,9 +170,6 @@ const LinkedAccounts = () => {
                 category={item.category}
               />
             ))}
-          {/* <LinkedAccount deleteHandler={openDeleteModal} accountNum="222" />
-          <LinkedAccount deleteHandler={openDeleteModal} accountNum="223" /> */}
-          {/* 여기에 들어갈 내용 1. 금융기관 bank 2. 상품명 category 3. 계좌번호 accountNum */}
         </AccountWrapper>
       </ContentWrapper>
       <AddBtnWrapper>
