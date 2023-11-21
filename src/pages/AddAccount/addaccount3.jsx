@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { axiosInstance } from "../../apis";
 import { useNavigate } from "react-router-dom";
 import { Text, InputBox, BackAppBar } from "../../components";
 import {
@@ -29,6 +30,7 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import {
   financialInstitutionState,
   transactionNumberState,
+  loginUserEmail,
 } from "../../store/atoms";
 import shinhan from "../../assets/images/shinhanLogo.svg";
 import kb from "../../assets/images/kbIcon.svg";
@@ -39,10 +41,12 @@ function AddAccount3({
   bank = "KB증권",
   accountNumber = "93931967948",
 }) {
+  const getEmail = useRecoilValue(loginUserEmail);
   const financialInstitution = useRecoilValue(financialInstitutionState);
   const transactionNumber = useRecoilValue(transactionNumberState);
   const setFinancialInstitution = useSetRecoilState(financialInstitutionState);
   const setTransactionNumber = useSetRecoilState(transactionNumberState);
+  const [userName, setUserName] = useState("");
 
   const navigate = useNavigate();
   const handleNextClick = () => {
@@ -50,6 +54,42 @@ function AddAccount3({
     setFinancialInstitution("");
     navigate("/LinkedAccounts");
   };
+
+  const getUserNameF = async () => {
+    // 여기서 토큰 값을 가져오거나, 토큰이 있다고 가정합니다.
+    const token = document.cookie // 쿠키 값 가져오기
+      .split("; ")
+      .find((row) => row.startsWith("token="))
+      ?.split("=")[1];
+
+    if (token) {
+      axiosInstance.defaults.headers.common[
+        "Authorization"
+      ] = `Bearer ${token}`;
+      try {
+        const response = await axiosInstance.get(
+          `/api/accounts/name/${getEmail}`
+        );
+        if (response.data.data) {
+          setUserName(response.data.data);
+          console.log(response.data.data, "success data+data");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      console.log("토큰이 없습니다. 로그인이 필요합니다."); // 토큰이 없을 경우 로그인 필요 메시지 출력
+      // 또는 사용자에게 다시 로그인하라는 경고 메시지 표시 등의 처리
+    }
+  };
+
+  useEffect(() => {
+    getUserNameF();
+    console.log("useEffect 기본 ");
+  }, []);
+  useEffect(() => {
+    console.log("userName이 변했습니다");
+  }, [userName]);
   // Determine the logo source based on the financial institution
   const getLogoSource = () => {
     switch (financialInstitution) {
@@ -77,7 +117,7 @@ function AddAccount3({
       </WrapperInputOut>
 
       <NoticeWrapper3>
-        <Text>{customerName} 고객님,</Text>
+        <Text>{userName} 고객님,</Text>
         <Text>아래 계좌 연결을 완료했습니다.</Text>
       </NoticeWrapper3>
 
