@@ -21,6 +21,7 @@ import {
 const LinkedAccounts = () => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [accountToDelete, setAccountToDelete] = useState(0);
+  const [accountList, setAccountList] = useState([]);
   const navigate = useNavigate();
   const openDeleteModal = (accountN) => {
     setAccountToDelete(accountN); // 삭제할 계좌 번호 저장
@@ -69,6 +70,7 @@ const LinkedAccounts = () => {
       .get("/api/accounts/yoj9168@gmail.com")
       .then((response) => {
         console.log(response.data);
+        setAccountList(response.data);
         alert("연결된 계좌 리스트!:D");
       })
       .catch((e) => {
@@ -106,8 +108,11 @@ const LinkedAccounts = () => {
 
   useEffect(() => {
     getTrnasactions();
+    console.log(accountList);
   }, []);
-
+  useEffect(() => {
+    console.log(accountList, "업데이트됨!");
+  }, accountList);
   return (
     <Container>
       {isDeleteModalOpen && (
@@ -124,18 +129,20 @@ const LinkedAccounts = () => {
       <ContentWrapper>
         <TitleWrapper>
           <NameWrapper>
-            <Text theme="dashBoardName">권기훈</Text>
+            <Text theme="dashBoardName">{accountList.name}권기훈</Text>
             <Text theme="dashBoardInfo"> 님의 계좌정보</Text>
           </NameWrapper>
           <NameWrapperbottom>
-            <Text theme="dashBoard">총 연결 계좌 3 개</Text>
+            <Text theme="dashBoard">
+              총 연결 계좌 {accountList.listCnt}3 개
+            </Text>
           </NameWrapperbottom>
         </TitleWrapper>
         {/* 계좌 리스트 api로 받아서 넣기 */}
         <AccountWrapper>
           <LinkedAccount deleteHandler={openDeleteModal} accountNum="222" />
           <LinkedAccount deleteHandler={openDeleteModal} accountNum="223" />
-          {/* 여기에 들어갈 내용 1. 금융기관 bank 2. 상품명 accountName 3. 계좌번호 accountNum */}
+          {/* 여기에 들어갈 내용 1. 금융기관 bank 2. 상품명 category 3. 계좌번호 accountNum */}
         </AccountWrapper>
       </ContentWrapper>
       <AddBtnWrapper>

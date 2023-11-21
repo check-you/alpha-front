@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { axiosInstance } from "../../apis";
+import { useRecoilValue } from "recoil";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import {
   Text,
@@ -20,38 +20,10 @@ import {
   Wrapper3,
 } from "./styled";
 import design1 from "../../assets/images/design1.svg";
+import { transactionFromApi } from "../../store/atoms";
 
 const Transaction = () => {
-  // const { userName, financialInstitution, transactionNumber } = useParams();
-  // const [transactionItems, getTrnasactionItems] = useEffect("");
-  const [searchParams, setSearchParams] = useSearchParams();
-  const queryString = location.search;
-  const getTransactions = async () => {
-    axiosInstance
-      .post("/api/main/search", {
-        name: searchParams.get("userName"),
-        bank: searchParams.get("financialInstitution"),
-        account: searchParams.get("transactionNumber"),
-        // belong: searchParams.get("affiliation"),
-        // businessCode: searchParams.get("userNumber"),
-      })
-      .then((response) => {
-        console.log(response.data);
-        alert("거래내역 가져오기완료!:D");
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  };
-
-  useEffect(() => {
-    console.log(searchParams.get("userName"));
-    console.log(searchParams.get("affiliation"));
-    console.log(searchParams.get("userNumber"));
-    console.log(searchParams.get("transactionNumber"));
-    console.log(searchParams.get("userName"));
-    getTransactions();
-  }, []);
+  const dataFromApi = useRecoilValue(transactionFromApi);
 
   const getUpDownClass = (value) => {
     return value > 0 ? "transactionUp" : "transactionDown";

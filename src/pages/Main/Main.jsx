@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { useSetRecoilState } from "recoil";
+import { axiosInstance } from "../../apis";
+import { transactionFromApi } from "../../store/atoms";
 import { useNavigate } from "react-router-dom";
 import Logo from "../../assets/images/DoubleCheck.svg";
 // import Logo from "../../assets/images/logo.svg";
@@ -22,7 +25,9 @@ import Group from "../../assets/images/sosock.svg";
 import ID from "../../assets/images/saupja.svg";
 
 const Main = () => {
+  const setTransactionDatas = useSetRecoilState(transactionFromApi);
   const [userName, setUserName] = useState("");
+  const [isThere, setIsThere] = useState(false);
   const [financialInstitution, setFinancialInstitution] = useState("");
   const [transactionNumber, setTransactionNumber] = useState("");
   const [affiliation, setAffiliation] = useState("");
@@ -51,16 +56,41 @@ const Main = () => {
       modalOpen();
     }
   };
+  const getTransactions = async () => {
+    axiosInstance
+      .post("/api/main/search", {
+        name: userName,
+        bank: financialInstitution,
+        account: transactionNumber,
+      })
+      .then((response) => {
+        setTransactionDatas(response.data);
+        console.log(response.data);
+        alert("거래내역 가져오기완료!:D");
+
+        if (response.data.success) {
+          navigate(
+            `/Transaction?userName=${userName}&financialInstitution=${financialInstitution}&transactionNumber=${transactionNumber}`
+          );
+        } else {
+          alert("등록된 사용자가 아닙니다. ");
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
   const handleSearch = () => {
     if (!userName || !financialInstitution || !transactionNumber) {
       setShowError(true);
     } else {
       setShowError(false);
       console.log("조회 버튼이 클릭되었습니다.");
+      getTransactions();
       // 여기에 조회 로직 추가
-      navigate(
-        `/Transaction?userName=${userName}&financialInstitution=${financialInstitution}&transactionNumber=${transactionNumber}`
-      );
+      // navigate(
+      //   `/Transaction?userName=${userName}&financialInstitution=${financialInstitution}&transactionNumber=${transactionNumber}`
+      // );
     }
   };
 
