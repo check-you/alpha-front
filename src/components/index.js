@@ -10,3 +10,4 @@ export { default as TransactionItems } from "./Molecule/TransactionItems";
 export { default as Modal } from "./Organism/Modal";
 export { default as AlertModal } from "./Organism/AlertModal";
 export { default as SelectModal } from "./Organism/SelectModal";
+export { default as AlertOneBtnModal } from "./Organism/AlertOneBtnModal";
