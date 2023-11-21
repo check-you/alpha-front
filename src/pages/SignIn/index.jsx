@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useSetRecoilState } from "recoil";
+import { loginUserEmail, isLoginAtom } from "../../store/atoms";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import IconButton from "@mui/material/IconButton";
@@ -15,7 +17,6 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Logo from "../../assets/images/logo.svg";
 import { Image } from "./styled";
 import { HomeAppBar } from "../../components";
-import axios from "../../apis/index";
 import { useNavigate } from "react-router-dom";
 import { axiosInstance } from "../../apis";
 
@@ -40,6 +41,9 @@ export default function SignIn() {
   const navigate = useNavigate();
   const [successLogin, setSuccessLogin] = useState(true);
 
+  const setUserEmail = useSetRecoilState(loginUserEmail);
+  const setIsLoginAtom = useSetRecoilState(isLoginAtom);
+
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
@@ -60,7 +64,7 @@ export default function SignIn() {
     event.preventDefault();
     try {
       const response = await axiosInstance.post(
-        "/api/user/login",  // Remove baseURL from the URL
+        "/api/user/login", // Remove baseURL from the URL
         {
           email: email,
           password: password,
@@ -78,7 +82,9 @@ export default function SignIn() {
         document.cookie = `token=${token}; path=/`;
         // 로그인 성공 처리
         console.log("로그인 성공:", response.data);
-  
+        // 이메일 recoil값으로 저장하기 & 로그인 여부 확인
+        setIsLoginAtom(true);
+        setUserEmail(email);
         // 인트로로 이동
         navigate("/linkedaccounts");
       } else {
@@ -88,10 +94,13 @@ export default function SignIn() {
     } catch (error) {
       // 로그인 실패 처리
       setSuccessLogin(false);
-      console.error("로그인 실패:",error, error.response?.data?.reason || "알 수 없는 오류");
+      console.error(
+        "로그인 실패:",
+        error,
+        error.response?.data?.reason || "알 수 없는 오류"
+      );
     }
   };
-   
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -167,12 +176,12 @@ export default function SignIn() {
               variant="contained"
               sx={{ mt: 3, mb: 2, py: 2 }}
               disabled={!isEmailValid || !isPasswordValid}
-              >로그인</Button>
-              {successLogin ? null : (
-                <p>
-                  아이디와 비밀번호를 다시 확인해주세요.
-                </p>
-              )}
+            >
+              로그인
+            </Button>
+            {successLogin ? null : (
+              <p>아이디와 비밀번호를 다시 확인해주세요.</p>
+            )}
             <Grid container justifyContent="center" alignItems="center">
               <Link href="/signup" underline="none" variant="body2">
                 {"아직 계정이 없으신가요? 회원가입"}
