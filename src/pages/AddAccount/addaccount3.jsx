@@ -1,5 +1,5 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Text, InputBox, BackAppBar } from "../../components";
 import {
   Container,
@@ -25,26 +25,37 @@ import first from "../../assets/images/firstNocheck.svg";
 import second from "../../assets/images/secondNocheck.svg";
 import third from "../../assets/images/thirdCheck.svg";
 import design1 from "../../assets/images/design1.svg";
-import { useRecoilValue } from 'recoil';
-import { financialInstitutionState, transactionNumberState } from '../../store/atoms';
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import {
+  financialInstitutionState,
+  transactionNumberState,
+} from "../../store/atoms";
 import shinhan from "../../assets/images/shinhanLogo.svg";
 import kb from "../../assets/images/kbIcon.svg";
 import nh from "../../assets/images/nhlogo.svg";
 
-
-function AddAccount3({ customerName = "조현진", bank = "KB증권", accountNumber = "93931967948" }) {
+function AddAccount3({
+  customerName = "조현진",
+  bank = "KB증권",
+  accountNumber = "93931967948",
+}) {
   const financialInstitution = useRecoilValue(financialInstitutionState);
   const transactionNumber = useRecoilValue(transactionNumberState);
+  const setFinancialInstitution = useSetRecoilState(financialInstitutionState);
+  const setTransactionNumber = useSetRecoilState(transactionNumberState);
+
   const navigate = useNavigate();
   const handleNextClick = () => {
-    navigate('/LinkedAccounts');
+    setTransactionNumber("");
+    setFinancialInstitution("");
+    navigate("/LinkedAccounts");
   };
   // Determine the logo source based on the financial institution
   const getLogoSource = () => {
     switch (financialInstitution) {
-      case 'KB증권':
+      case "KB증권":
         return kb;
-      case 'NH투자증권':
+      case "NH투자증권":
         return nh;
       default:
         return shinhan;
@@ -67,26 +78,20 @@ function AddAccount3({ customerName = "조현진", bank = "KB증권", accountNum
 
       <NoticeWrapper3>
         <Text>{customerName} 고객님,</Text>
-        <Text>
-          아래 계좌 연결을 완료했습니다.
-        </Text>
+        <Text>아래 계좌 연결을 완료했습니다.</Text>
       </NoticeWrapper3>
 
       <AccountView>
         <Image2 src={getLogoSource()} alt="증권사" />
         <AccountInfo>
-          <Text>
-            {financialInstitution}
-          </Text>
-          <Text>
-            ({transactionNumber})
-          </Text>
+          <Text>{financialInstitution}</Text>
+          <Text>({transactionNumber})</Text>
         </AccountInfo>
       </AccountView>
       <Button onClick={handleNextClick}>내 계좌 관리하러가기</Button>
       <ForLayout2></ForLayout2>
     </Container>
-  )
+  );
 }
 
-export default AddAccount3
+export default AddAccount3;

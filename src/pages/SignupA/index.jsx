@@ -21,11 +21,7 @@ import third from "../../assets/images/thirdNocheck.svg";
 const SignupA = () => {
   const navigate = useNavigate();
   const handleSubmit = () => {
-    if (true) {
-      navigate("/signupb");
-    } else {
-      alert("비밀번호가 일치하지 않습니다.");
-    }
+    navigate("/signupb");
   };
   return (
     <Container>
