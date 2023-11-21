@@ -77,12 +77,13 @@ export default function SignIn() {
       console.log("로그인 성공:", response.data);
 
       // 인트로로 이동
-      navigate("/LinkedAccounts");
+      navigate("/linkedaccounts");
     } catch (error) {
       // 로그인 실패 처리
       setSuccessLogin(false);
       console.error("로그인 실패:", error.response.data.reason);
     }
+
   };
    
 
@@ -158,12 +159,14 @@ export default function SignIn() {
               type="submit"
               fullWidth
               variant="contained"
-              href="/"
               sx={{ mt: 3, mb: 2, py: 2 }}
               disabled={!isEmailValid || !isPasswordValid}
-            >
-              로그인
-            </Button>
+              >로그인</Button>
+              {successLogin ? null : (
+                <p className={styles.loginError}>
+                  아이디와 비밀번호를 다시 확인해주세요.
+                </p>
+              )}
             <Grid container justifyContent="center" alignItems="center">
               <Link href="/signup" underline="none" variant="body2">
                 {"아직 계정이 없으신가요? 회원가입"}
