@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import IconButton from "@mui/material/IconButton";
@@ -15,6 +15,8 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Logo from "../../assets/images/logo.svg";
 import { Image } from "./styled";
 import { HomeAppBar } from "../../components";
+import axios from "../../apis/index";
+import { useNavigate } from "react-router-dom";
 
 const defaultTheme = createTheme({
   palette: {
@@ -33,8 +35,9 @@ export default function SignIn() {
   const [password, setPassword] = React.useState("");
   const [isEmailValid, setEmailValid] = React.useState(false);
   const [isPasswordValid, setPasswordValid] = React.useState(false);
-
   const handleClickShowPassword = () => setShowPassword((show) => !show);
+  const navigate = useNavigate();
+  const [successLogin, setSuccessLogin] = useState(true);
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
@@ -52,14 +55,36 @@ export default function SignIn() {
     setPasswordValid(event.target.value.length >= 8);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_SERVER_PORT}/api/member/login`,
+        {
+          nickName: nickname,
+          password: password,
+        },
+        {
+          withCredentials: true,
+        }
+      );
+      // 토큰 값을 가져옴
+   const token = response.headers.get("Accesstoken");
+   // 토큰을 LocalStorage에 저장
+   localStorage.setItem("token", token);
+
+   // 로그인 성공 처리
+   console.log("로그인 성공:", response.data);
+
+   // 인트로로 이동
+   navigate("/LinkedAccounts");
+ } catch (error) {
+   // 로그인 실패 처리
+   setSuccessLogin(false);
+   console.error("로그인 실패:", error.response.data.reason);
+ }
   };
+   
 
   return (
     <ThemeProvider theme={defaultTheme}>
