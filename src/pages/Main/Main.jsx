@@ -4,7 +4,6 @@ import { axiosInstance } from "../../apis";
 import { transactionFromApi } from "../../store/atoms";
 import { useNavigate } from "react-router-dom";
 import Logo from "../../assets/images/DoubleCheck.svg";
-// import Logo from "../../assets/images/logo.svg";
 import {
   Container,
   Image,
