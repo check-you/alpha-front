@@ -12,6 +12,7 @@ export const isLoginAtom = atom({
   key: "isLoginAtom",
   default: false,
 });
+
 export const signUpDataAtom = atom({
   key: "signUpData",
   default: {
