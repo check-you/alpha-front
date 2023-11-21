@@ -42,10 +42,10 @@ const Main = () => {
     setModalOpen(false);
   };
   const isThereModalOpen = () => {
-    setModalOpen(true);
+    SetIsThereModal(true);
   };
   const isThereModalClose = () => {
-    setModalOpen(false);
+    SetIsThereModal(false);
   };
   const handleCloseAlert = () => {
     modalClose();
@@ -73,17 +73,14 @@ const Main = () => {
         setTransactionDatas(response.data);
         console.log(response.data);
         alert("거래내역 가져오기완료!:D");
-
         if (response.data.success) {
           navigate(
             `/Transaction?userName=${userName}&financialInstitution=${financialInstitution}&transactionNumber=${transactionNumber}`
           );
-        } else {
-          isThereModalOpen();
-          alert("등록된 사용자가 아닙니다. ");
         }
       })
       .catch((e) => {
+        isThereModalOpen();
         console.log(e);
       });
   };
@@ -104,7 +101,7 @@ const Main = () => {
   return (
     <Container>
       {isThereModal && (
-        <AlertOneBtnModal closeHandelr={isThereModalClose}>
+        <AlertOneBtnModal closeHandler={isThereModalClose}>
           존재하지 않는 사용자입니다
         </AlertOneBtnModal>
       )}

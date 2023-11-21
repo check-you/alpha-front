@@ -26,12 +26,7 @@ export const TextWrapper = styled.div`
   justify-content: left;
   text-align: left;
 `;
-export const BtnWrapper = styled.div`
-  display: flex;
-  width: 62vw;
-  flex-direction: row;
-  justify-content: space-between;
-`;
+export const BtnWrapper = styled.div``;
 
 export const Image = styled.img`
   margin: 1vw;
