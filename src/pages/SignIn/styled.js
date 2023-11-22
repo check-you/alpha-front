@@ -5,8 +5,7 @@ export const Image = styled.img`
 `;
 
 export const Text = styled.div`
-  width: 65%;
-  color: #6f1c7e;
+  color: #bb84e8;
   text-align: right;
   padding-right: 5%;
   font-weight: light;
