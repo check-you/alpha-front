@@ -117,7 +117,7 @@ const Signup = () => {
       .then((response) => {
         if (response.data.data == false) {
           setSignupData();
-          navigate("/signup1");
+          navigate("/signup2");
           console.log(response.data, "회원가입 요청 성공");
           console.log(settingComSignupData);
         } else {
