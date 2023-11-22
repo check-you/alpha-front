@@ -185,19 +185,18 @@ export default function SignIn() {
             >
               로그인
             </Button>
-
-            <Grid container justifyContent="center" alignItems="center">
-              <Text>아직 계정이 없으신가요? </Text>
-              <Link
-                href="/signup"
-                underline="none"
-                variant="body2"
-                style={{ width: "30%", textAlign: "left" }}
-              >
-                {"회원가입"}
-              </Link>
-            </Grid>
           </Box>
+          <Grid container justifyContent="center" alignItems="center">
+            <Text theme="goToSignup">아직 계정이 없으신가요? </Text>
+            <Link
+              href="/signup"
+              underline="none"
+              variant="body2"
+              style={{ width: "35%", textAlign: "center" }}
+            >
+              <Text theme="goToSignup">회원가입</Text>
+            </Link>
+          </Grid>
         </Box>
       </Container>
     </ThemeProvider>

@@ -148,8 +148,8 @@ const textStyles = {
   },
   goToSignup: {
     fontWeight: "bold",
-    fontSize: "4vw",
-    color: "black",
+    fontSize: "3vw",
+    color: "purple",
   },
   dates: {
     fontWeight: "light",
