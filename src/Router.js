@@ -3,10 +3,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Main from "./pages/Main/Main";
 import NotFound from "./pages/NotFound";
 import LinkedAccounts from "./pages/LinkedAccounts";
-import Signup from "./pages/Signup";
-import SignupA from "./pages/SignupA";
-import SignupB from "./pages/SignupB";
-import SignupC from "./pages/SignupC";
+import SignUp from "./pages/SignUp/index.jsx";
+import SignUpA from "./pages/SignUpA/index.jsx";
+import SignUpB from "./pages/SignUpB/index.jsx";
+import SignUpC from "./pages/SignUpC/index.jsx";
 import SignIn from "./pages/SignIn";
 import AddAccount from "./pages/AddAccount/addaccount.jsx";
 import AddAccount2 from "./pages/AddAccount/addaccount2.jsx";
@@ -18,10 +18,10 @@ const Router = () => {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/linkedaccounts" element={<LinkedAccounts />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/signupa" element={<SignupA />} />
-        <Route path="/signupb" element={<SignupB />} />
-        <Route path="/signupc" element={<SignupC />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/signupa" element={<SignUpA />} />
+        <Route path="/signupb" element={<SignUpB />} />
+        <Route path="/signupc" element={<SignUpC />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/addaccount" element={<AddAccount />} />
         <Route path="/addaccount2" element={<AddAccount2 />} />
