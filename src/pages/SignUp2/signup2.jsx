@@ -21,7 +21,7 @@ import third from "../../assets/images/thirdNocheck.svg";
 const SignupA = () => {
   const navigate = useNavigate();
   const handleSubmit = () => {
-    navigate("/signup2");
+    navigate("/signup3");
   };
   return (
     <Container>

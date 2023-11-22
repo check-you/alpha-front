@@ -7,4 +7,5 @@ import "./styles/global.css";
 
 axios.defaults.withCredentials = true;
 const root = ReactDOM.createRoot(document.getElementById("root"));
+console.log("TEST index");
 root.render(<App />);

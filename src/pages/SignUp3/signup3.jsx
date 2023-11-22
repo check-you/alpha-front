@@ -58,7 +58,7 @@ const SignupB = () => {
         if (response.data.data == true) {
           console.log(response.data.data, "성공 응답");
           console.log(response.data, "응답 데이터");
-          navigate("/signup3");
+          navigate("/signup4");
         } else {
           console.log(response.data.data, "실패 응답");
 
