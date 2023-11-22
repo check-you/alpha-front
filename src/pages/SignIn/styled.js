@@ -3,6 +3,10 @@ import styled from "styled-components";
 export const Image = styled.img`
   width: 35vw;
 `;
+export const AlertWrapper = styled.div`
+  width: 90vw;
+  text-align: center;
+`;
 
 export const Text = styled.div`
   color: #bb84e8;

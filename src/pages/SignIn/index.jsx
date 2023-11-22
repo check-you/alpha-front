@@ -15,7 +15,7 @@ import { purple } from "@mui/material/colors";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Logo from "../../assets/images/DoubleCheck.svg";
-import { Image } from "./styled";
+import { Image, AlertWrapper } from "./styled";
 import { HomeAppBar, Text } from "../../components";
 import { useNavigate } from "react-router-dom";
 import { axiosInstance } from "../../apis";
@@ -171,23 +171,11 @@ export default function SignIn() {
                 ),
               }}
             />
-            <Grid
-              container
-              display="flex"
-              flexDirection="column"
-              justifyContent="center"
-              alignItems="center"
-            >
-              <Text>아직 계정이 없으신가요? </Text>
-              <Link
-                href="/signup"
-                underline="none"
-                variant="body2"
-                style={{ width: "30%", textAlign: "center" }}
-              >
-                <Text theme="goToSignup">회원가입</Text>
-              </Link>
-            </Grid>
+            {successLogin ? null : (
+              <AlertWrapper>
+                아이디와 비밀번호를 다시 확인해주세요.
+              </AlertWrapper>
+            )}
             <Button
               type="submit"
               fullWidth
@@ -195,8 +183,20 @@ export default function SignIn() {
               sx={{ mt: 3, mb: 2, py: 2 }}
               disabled={!isEmailValid || !isPasswordValid}
             >
-              <Text theme="loginText">로그인</Text>
+              로그인
             </Button>
+
+            <Grid container justifyContent="center" alignItems="center">
+              <Text>아직 계정이 없으신가요? </Text>
+              <Link
+                href="/signup"
+                underline="none"
+                variant="body2"
+                style={{ width: "30%", textAlign: "left" }}
+              >
+                {"회원가입"}
+              </Link>
+            </Grid>
           </Box>
         </Box>
       </Container>
