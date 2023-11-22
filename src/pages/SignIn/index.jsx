@@ -23,7 +23,7 @@ import { axiosInstance } from "../../apis";
 const defaultTheme = createTheme({
   palette: {
     primary: {
-      main: purple[500],
+      main: "#bb84e8",
     },
     secondary: {
       main: "#f44336",
@@ -86,7 +86,7 @@ export default function SignIn() {
         setIsLoginAtom(true);
         setUserEmail(email);
         console.log(email);
-        
+
         // 인트로로 이동
         navigate("/linkedaccounts");
       } else {
@@ -171,7 +171,23 @@ export default function SignIn() {
                 ),
               }}
             />
-
+            <Grid
+              container
+              display="flex"
+              flexDirection="column"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Text>아직 계정이 없으신가요? </Text>
+              <Link
+                href="/signup"
+                underline="none"
+                variant="body2"
+                style={{ width: "30%", textAlign: "center" }}
+              >
+                <Text theme="goToSignup">회원가입</Text>
+              </Link>
+            </Grid>
             <Button
               type="submit"
               fullWidth
@@ -179,22 +195,8 @@ export default function SignIn() {
               sx={{ mt: 3, mb: 2, py: 2 }}
               disabled={!isEmailValid || !isPasswordValid}
             >
-              로그인
+              <Text theme="loginText">로그인</Text>
             </Button>
-            {successLogin ? null : (
-              <p>아이디와 비밀번호를 다시 확인해주세요.</p>
-            )}
-            <Grid container justifyContent="center" alignItems="center">
-              <Text>아직 계정이 없으신가요? </Text>
-              <Link
-                href="/signup"
-                underline="none"
-                variant="body2"
-                style={{ width: "30%", textAlign: "left" }}
-              >
-                {"회원가입"}
-              </Link>
-            </Grid>
           </Box>
         </Box>
       </Container>

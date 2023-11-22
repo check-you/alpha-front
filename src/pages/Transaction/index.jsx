@@ -102,42 +102,6 @@ const Transaction = () => {
                 />
               );
             })}
-          {/* <TransactionItems
-            theme="transactionTableContent"
-            updown="transactionUp"
-            itemName="신한투자증권"
-            transactionTime="2023.11.22"
-            price="255874"
-            profitRate="34%"
-            category="국내주식매도"
-          />
-          <TransactionItems
-            theme="transactionTableContent"
-            updown="transactionUp"
-            itemName="신한투자증권"
-            transactionTime="2023.11.22"
-            price="255874"
-            profitRate="34%"
-            category="국내주식매도"
-          />
-          <TransactionItems
-            theme="transactionTableContent"
-            updown="transactionUp"
-            itemName="신한투자증권"
-            transactionTime="2023.11.22"
-            price="255874"
-            profitRate="34%"
-            category="국내주식매도"
-          />
-          <TransactionItems
-            theme="transactionTableContent"
-            updown="transactionUp"
-            itemName="신한투자증권"
-            transactionTime="2023.11.22"
-            price="255874"
-            profitRate="34%"
-            category="국내주식매도"
-          /> */}
         </TransactionLists>
       </WrapperOut>
     </Container>

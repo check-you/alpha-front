@@ -141,6 +141,16 @@ const textStyles = {
     color: "#471AA0",
     lineHeight: "5vw",
   },
+  loginText: {
+    fontWeight: "bold",
+    fontSize: "4vw",
+    color: "white",
+  },
+  goToSignup: {
+    fontWeight: "bold",
+    fontSize: "4vw",
+    color: "black",
+  },
   dates: {
     fontWeight: "light",
     fontSize: "2vw",
